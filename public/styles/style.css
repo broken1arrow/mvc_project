@@ -7,12 +7,12 @@ body {
     width: device-width;
     min-height: 100vh;
     display: flex;
-   grid-template-columns: 1fr;
-   
-   flex-direction: column;
+    grid-template-columns: 1fr;
+
+    flex-direction: column;
     grid-auto-flow: dense;
     gap: 0;
-   
+
     align-items: center;
     background-image: linear-gradient(170deg, #4cbf5be0, #065010a7);
     margin: auto;
@@ -27,7 +27,7 @@ header {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-   
+
 }
 
 header nav {
@@ -48,10 +48,10 @@ header nav {
 footer {
     text-align: center;
     background-image: linear-gradient(170deg, #19191955, #01330857);
-   max-width: 1400px;
-   width: 100%;
-   height: 100%;
-   margin-top: 10em;
+    max-width: 1400px;
+    width: 100%;
+    height: 100%;
+    margin-top: 10em;
     font-size: 1rem;
 }
 
@@ -141,20 +141,20 @@ main h1 {
     text-align: center;
 }
 
-
+/* 
 table th:nth-child(odd),
 table td:nth-child(odd) {
     background-color: #42a00400;
-    background-image: linear-gradient(45deg, #42a004, #2f6d06);
+    background-image: linear-gradient(45deg, #42a004, #2f6d06); 
 }
 
 
 table th:nth-child(even),
 table td:nth-child(even) {
     background-color: #045a1800;
-    background-image: linear-gradient(200deg, #06641c, #327207);
+     background-image: linear-gradient(200deg, #06641c, #327207); 
 }
-
+*/
 
 table tr:first-child th:first-child {
     border-top-left-radius: var(--table-radius);
@@ -172,13 +172,13 @@ table tr:last-child td:first-child {
 table tr:last-child td:last-child {
     border-bottom-right-radius: var(--table-radius);
 }
-
+ /*
 th,
 td {
-    border: 0.1em solid #01000b;
+     border: 0.1em solid #01000b; 
 
 }
-
+*/
 .table-border-style {
     border: 0.1em solid #01000b;
     border-radius: var(--table-radius);
@@ -197,7 +197,7 @@ table {
     width: fit-content;
     border-style: hidden;
     border-radius: var(--table-radius);
-    box-shadow: 8px 8px 10px 3px #01000ba8;
+   /*  box-shadow: 8px 8px 10px 3px #01000ba8; */
 }
 
 .form-label {
@@ -209,33 +209,35 @@ table {
 form {
     border: 0.01em solid #01000b;
     box-shadow: 8px 8px 10px 3px #01000ba8;
-    background-color: #9fac72;
+    background-color: #0650105e;
     border-radius: var(--table-radius);
     min-width: 200px;
 }
 
 fieldset input {
+    font-size: 2rem;
+    background-color: #242424;
     margin-top: 2px;
     ;
 }
 
 fieldset input:last-child {
     margin-top: 10px;
-    background-color: #6ba684;
+    background-color: #242424;
     color: #ffffff;
     border-top: none;
     border-left: none;
-    border-top: 2.5px solid #2b2b2b;
-    border-left: 2.5px solid #2b2b2b;
-    border-bottom: 3px solid #2b2b2b;
-    border-right: 3px solid #2b2b2b;
+    border-top: 2.5px solid #131313;
+    border-left: 2.5px solid #131313;
+    border-bottom: 3px solid #131313;
+    border-right: 3px solid #131313;
     transition: 0.2s ease;
     border-radius: 0.3em;
 }
 
 fieldset input:last-child:active {
     color: #81d1d7;
-    background-color: #668d73;
+    background-color: #000000;
     border-top: 3px solid #2b2b2b;
     border-left: 3px solid #2b2b2b;
     border-bottom: 2.5px solid #2b2b2b;
@@ -518,6 +520,18 @@ grid {
     padding: 0 5px 10px 5px;
 }
 
+.card_item {
+    font-size: 5.5rem;
+    margin: 0;
+}
+
+.card_item_red {
+    font-size: 5.5rem;
+    margin: 0;
+    color: #c70e0e;
+
+}
+
 /* 
 .grid_item_customer:hover {
      background-color: #e9e9e9; 
@@ -562,6 +576,8 @@ grid {
         display: flex;
         flex-direction: column;
     }
+
+   
 
     .form-label-wrapper {
         display: flex;

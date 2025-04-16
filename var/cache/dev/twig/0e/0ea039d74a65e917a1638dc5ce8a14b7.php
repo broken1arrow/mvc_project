@@ -174,12 +174,14 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
                         <a href=\"https://www.mongodb.com/docs/drivers/java/sync/current/get-started/\">
                             www.mongodb.com</a> är mer gjort för sånna som redan är insatta i just dessa API:er. Än för
                         vanligt folk, kod exemplen i Symfony är utspridd utan någon samanfattning och sen länkars det
-                        inte till korekt info att vi ska använda just composer och PHP. Samt hur man ska göra. Vidare så har jag
+                        inte till korekt info att vi ska använda just composer och PHP. Samt hur man ska göra. Vidare så
+                        har jag
                         ingen aning om hur klasser ska laddas automatiskt, du visade lite info i videon. Men inte
                         hur det funkar när vi använder denna setup när detta sköts automatiskt med hjälp av composer
                         (vist man ska in och pilla i en fil men inte mycket mer).
                     </p>
-                    <p>Lite mer text om detta hade varit bra hur det fungerar, om detta måste ändras eller fungerar out of the box. Men
+                    <p>Lite mer text om detta hade varit bra hur det fungerar, om detta måste ändras eller fungerar out
+                        of the box. Men
                         märkte att den hittade min klass så länge namespace börjar med App/ i alla fall, men har än så
                         länge bara en fil. Så vet inte än om jag kan komma åt andra klasser, men jag är nöjd så länge de
                         fungerar. Det är något som har genomsyrat hela kursen från i höstas, finns mycket otydlighet och
@@ -200,6 +202,22 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
                         skolservern.Skulle inte min plan B uppskattas tar jag till plan C. Just till koden fick jag ta
                         till egena källor för lära mig hur man sätter upp Symfony, men vissa saker som style fick jag ta
                         till mindre officella knep för få de att laddas in.
+                    </p>
+                    <h3>Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och
+                        värdefulla? Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram
+                        några delar av artikeln som du känner mer värdefulla.
+                    </h3>
+                    <p>Nu har jag redan jobba med programering, så har lite kännsla hur man ska jobba. Sen om de är rätt
+                        för detta språk är ju inte lätt att svara på. Brukar inte normalt stöta på problem hur jag
+                        jobbar med vist språk. Sen finns det garanterat åsikter om vad för methoder man ska använda och
+                        man inte bör använda vissa methoder/funtioner för dessa äter prestanda (dock vanligare i ett API
+                        detta kan vara ett problem).
+                    </p>
+                    <h3>Vilken har du lärt dig i denna kursdelen?
+                    </h3>
+                    <p>Ja de är ente enkeklt att sätta upp jämfört med Express. Sen att instruktionerna är fortfarande
+                        vaga, om inte än värre än tidigare kursdelar har gjort de svårare att sätta upp detta projekt.
+                        Som man säger skit in och skit ut.
                     </p>
                 </details>
             </section>
@@ -240,7 +258,7 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
         yield from [];
     }
 
-    // line 139
+    // line 157
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -253,7 +271,7 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "script"));
 
-        // line 140
+        // line 158
         yield "
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -300,7 +318,7 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  257 => 140,  244 => 139,  103 => 7,  90 => 6,  65 => 3,  42 => 1,);
+        return array (  275 => 158,  262 => 157,  103 => 7,  90 => 6,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -385,12 +403,14 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
                         <a href=\"https://www.mongodb.com/docs/drivers/java/sync/current/get-started/\">
                             www.mongodb.com</a> är mer gjort för sånna som redan är insatta i just dessa API:er. Än för
                         vanligt folk, kod exemplen i Symfony är utspridd utan någon samanfattning och sen länkars det
-                        inte till korekt info att vi ska använda just composer och PHP. Samt hur man ska göra. Vidare så har jag
+                        inte till korekt info att vi ska använda just composer och PHP. Samt hur man ska göra. Vidare så
+                        har jag
                         ingen aning om hur klasser ska laddas automatiskt, du visade lite info i videon. Men inte
                         hur det funkar när vi använder denna setup när detta sköts automatiskt med hjälp av composer
                         (vist man ska in och pilla i en fil men inte mycket mer).
                     </p>
-                    <p>Lite mer text om detta hade varit bra hur det fungerar, om detta måste ändras eller fungerar out of the box. Men
+                    <p>Lite mer text om detta hade varit bra hur det fungerar, om detta måste ändras eller fungerar out
+                        of the box. Men
                         märkte att den hittade min klass så länge namespace börjar med App/ i alla fall, men har än så
                         länge bara en fil. Så vet inte än om jag kan komma åt andra klasser, men jag är nöjd så länge de
                         fungerar. Det är något som har genomsyrat hela kursen från i höstas, finns mycket otydlighet och
@@ -411,6 +431,22 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
                         skolservern.Skulle inte min plan B uppskattas tar jag till plan C. Just till koden fick jag ta
                         till egena källor för lära mig hur man sätter upp Symfony, men vissa saker som style fick jag ta
                         till mindre officella knep för få de att laddas in.
+                    </p>
+                    <h3>Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och
+                        värdefulla? Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram
+                        några delar av artikeln som du känner mer värdefulla.
+                    </h3>
+                    <p>Nu har jag redan jobba med programering, så har lite kännsla hur man ska jobba. Sen om de är rätt
+                        för detta språk är ju inte lätt att svara på. Brukar inte normalt stöta på problem hur jag
+                        jobbar med vist språk. Sen finns det garanterat åsikter om vad för methoder man ska använda och
+                        man inte bör använda vissa methoder/funtioner för dessa äter prestanda (dock vanligare i ett API
+                        detta kan vara ett problem).
+                    </p>
+                    <h3>Vilken har du lärt dig i denna kursdelen?
+                    </h3>
+                    <p>Ja de är ente enkeklt att sätta upp jämfört med Express. Sen att instruktionerna är fortfarande
+                        vaga, om inte än värre än tidigare kursdelar har gjort de svårare att sätta upp detta projekt.
+                        Som man säger skit in och skit ut.
                     </p>
                 </details>
             </section>
@@ -459,6 +495,6 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
 
     });
 </script>
-{% endblock %}", "./page/report.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/templates/page/report.html.twig");
+{% endblock %}", "./page/report.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/rapport/templates/page/report.html.twig");
     }
 }

@@ -23,9 +23,11 @@ return [
     'about' => [[], ['_controller' => 'App\\Controller\\ControllPage::about'], [], [['text', '/about']], [], [], []],
     'api' => [[], ['_controller' => 'App\\Controller\\ControllPage::api'], [], [['text', '/api']], [], [], []],
     'quote' => [[], ['_controller' => 'App\\Controller\\ControllPage::quote'], [], [['text', '/api/quote']], [], [], []],
+    'cards' => [[], ['_controller' => 'App\\Controller\\ControllPage::cards'], [], [['text', '/cards']], [], [], []],
     'App\Controller\ControllPage::home' => [[], ['_controller' => 'App\\Controller\\ControllPage::home'], [], [['text', '/']], [], [], []],
     'App\Controller\ControllPage::raport' => [[], ['_controller' => 'App\\Controller\\ControllPage::raport'], [], [['text', '/report']], [], [], []],
     'App\Controller\ControllPage::about' => [[], ['_controller' => 'App\\Controller\\ControllPage::about'], [], [['text', '/about']], [], [], []],
     'App\Controller\ControllPage::api' => [[], ['_controller' => 'App\\Controller\\ControllPage::api'], [], [['text', '/api']], [], [], []],
     'App\Controller\ControllPage::quote' => [[], ['_controller' => 'App\\Controller\\ControllPage::quote'], [], [['text', '/api/quote']], [], [], []],
+    'App\Controller\ControllPage::cards' => [[], ['_controller' => 'App\\Controller\\ControllPage::cards'], [], [['text', '/cards']], [], [], []],
 ];

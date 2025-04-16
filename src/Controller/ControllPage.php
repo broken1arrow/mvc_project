@@ -4,12 +4,22 @@
 namespace App\Controller;
 
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\cards\CardsHandler;
+use SebastianBergmann\Environment\Console;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ControllPage extends AbstractController
 {
+    private CardsHandler $cardsHandler;
+
+    public function __construct()
+    {
+        $this->cardsHandler = new CardsHandler();
+    }
 
     #[Route('/', name: 'index')]
     public function home(): Response
@@ -46,9 +56,11 @@ class ControllPage extends AbstractController
         $some = ["api" => "api", "about" => "about", "report" => "report", "index" => "/", "quote" => "api/quote"];
         return $this->render('./page/api.html.twig', [
             'title' => 'Api',
-            'routes' => json_encode( $some, true),
+            'routes' => json_encode($some, true),
         ]);
     }
+
+
     #[Route('/api/quote', name: 'quote')]
     public function quote(): Response
     {
@@ -65,6 +77,45 @@ class ControllPage extends AbstractController
         return $this->render('./page/api.html.twig', [
             'title' => 'Quote',
             'routes' => json_encode($some[$rand], true),
+        ]);
+    }
+
+    #[Route('/cards', name: 'cards', methods: ['GET', 'POST'])]
+    public function cards(Request $request, SessionInterface $session): Response
+    {
+        $cards = null;
+     /*    if (!$session->get("cards")) {
+            $session->set("cards", $this->cardsHandler->getCards());
+        } */
+        $cardsList = $session->get("cards");
+
+        if ($cardsList && $request->request->has('deck')) {
+            $cards = implode("", array_values($cardsList));
+        }
+        if ($cardsList && $request->request->has('shuffel')) {
+            shuffle($cardsList);
+            $cards = implode("", array_values($cardsList));
+        }
+        if ($request->request->has('draw')) {
+            $deck = $session->get("cards");
+            if ($deck) {
+                $index = array_rand($deck);
+                $cards = $deck[$index];
+                unset($deck[$index]);
+                $session->set("cards", $deck);
+    
+            }else{
+                $cards = "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must reset to draw new cards.</div>"; 
+            }
+        }
+
+        if ($request->request->has('reset')) {
+            $session->set("cards", $this->cardsHandler->getCards());
+        }
+
+        return $this->render('./page/cards.html.twig', [
+            'title' => 'Cards',
+            'cards' => $cards ?? null
         ]);
     }
 }

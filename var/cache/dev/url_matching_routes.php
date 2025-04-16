@@ -20,6 +20,7 @@ return [
         '/about' => [[['_route' => 'about', '_controller' => 'App\\Controller\\ControllPage::about'], null, null, null, false, false, null]],
         '/api' => [[['_route' => 'api', '_controller' => 'App\\Controller\\ControllPage::api'], null, null, null, false, false, null]],
         '/api/quote' => [[['_route' => 'quote', '_controller' => 'App\\Controller\\ControllPage::quote'], null, null, null, false, false, null]],
+        '/cards' => [[['_route' => 'cards', '_controller' => 'App\\Controller\\ControllPage::cards'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
