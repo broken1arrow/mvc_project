@@ -757,6 +757,6 @@ class __TwigTemplate_5f495341df8d473cd9d659ec443d600c extends Template
         </div>
     </div>
 {% endmacro %}
-", "@WebProfiler/Collector/cache.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/vendor/symfony/web-profiler-bundle/Resources/views/Collector/cache.html.twig");
+", "@WebProfiler/Collector/cache.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/vendor/symfony/web-profiler-bundle/Resources/views/Collector/cache.html.twig");
     }
 }

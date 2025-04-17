@@ -1943,6 +1943,6 @@ class __TwigTemplate_96205eee99dedf2f3d6f471a8e7ca7cb extends Template
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/vendor/doctrine/doctrine-bundle/templates/Collector/db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/vendor/doctrine/doctrine-bundle/templates/Collector/db.html.twig");
     }
 }

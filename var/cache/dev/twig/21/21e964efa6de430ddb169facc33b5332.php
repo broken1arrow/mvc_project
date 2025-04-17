@@ -1003,6 +1003,6 @@ class __TwigTemplate_869e800bc22992a7fb25329c25f468a6 extends Template
         {% endautoescape %}</script>
     </div>
 {% endmacro %}
-", "@WebProfiler/Collector/time.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/vendor/symfony/web-profiler-bundle/Resources/views/Collector/time.html.twig");
+", "@WebProfiler/Collector/time.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/vendor/symfony/web-profiler-bundle/Resources/views/Collector/time.html.twig");
     }
 }

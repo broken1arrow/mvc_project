@@ -103,7 +103,7 @@ class __TwigTemplate_500db652b831b4a227f6d1ed7a4b7ddc extends Template
     ";
         // line 7
         yield from $this->unwrap()->yieldBlock('cards', $context, $blocks);
-        // line 33
+        // line 46
         yield "</main>
 
 ";
@@ -156,6 +156,19 @@ class __TwigTemplate_500db652b831b4a227f6d1ed7a4b7ddc extends Template
                             <th> <input class=\"table_button\" type=\"submit\" name=\"shuffel\" value=\"shuffel\"> </th>
                             <th> <input class=\"table_button\" type=\"submit\" name=\"draw\" value=\"draw\"></th>
                             <th> <input class=\"table_button\" type=\"submit\" name=\"reset\" value=\"reset\"></th>
+                        
+                        </tr>
+                        <tr>
+                          
+                                <table style=\"width: 40%;\">
+                                    <tr>
+                                        <th> <input style=\"width: 50%;\" type=\"number\" name=\"draw-amount-min\" min=\"0\" max=\"52\" placeholder=\"min\"></th>
+                                        <th> <input style=\"width: 50%;\" type=\"number\" name=\"draw-amount-max\" min=\"1\" max=\"52\" placeholder=\"max\"></th>
+                                        <th> <input class=\"table_button\" type=\"submit\" name=\"draw-amount\"
+                                                value=\"draw amount\"></th>
+                                    </tr>
+                                </table>
+                           
                         </tr>
                     </table>
                 </fieldset>
@@ -193,7 +206,7 @@ class __TwigTemplate_500db652b831b4a227f6d1ed7a4b7ddc extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  148 => 15,  142 => 12,  138 => 10,  136 => 9,  133 => 8,  120 => 7,  107 => 33,  105 => 7,  101 => 5,  88 => 4,  65 => 3,  42 => 1,);
+        return array (  148 => 15,  142 => 12,  138 => 10,  136 => 9,  133 => 8,  120 => 7,  107 => 46,  105 => 7,  101 => 5,  88 => 4,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -223,6 +236,19 @@ class __TwigTemplate_500db652b831b4a227f6d1ed7a4b7ddc extends Template
                             <th> <input class=\"table_button\" type=\"submit\" name=\"shuffel\" value=\"shuffel\"> </th>
                             <th> <input class=\"table_button\" type=\"submit\" name=\"draw\" value=\"draw\"></th>
                             <th> <input class=\"table_button\" type=\"submit\" name=\"reset\" value=\"reset\"></th>
+                        
+                        </tr>
+                        <tr>
+                          
+                                <table style=\"width: 40%;\">
+                                    <tr>
+                                        <th> <input style=\"width: 50%;\" type=\"number\" name=\"draw-amount-min\" min=\"0\" max=\"52\" placeholder=\"min\"></th>
+                                        <th> <input style=\"width: 50%;\" type=\"number\" name=\"draw-amount-max\" min=\"1\" max=\"52\" placeholder=\"max\"></th>
+                                        <th> <input class=\"table_button\" type=\"submit\" name=\"draw-amount\"
+                                                value=\"draw amount\"></th>
+                                    </tr>
+                                </table>
+                           
                         </tr>
                     </table>
                 </fieldset>
@@ -232,6 +258,6 @@ class __TwigTemplate_500db652b831b4a227f6d1ed7a4b7ddc extends Template
     {% endblock %}
 </main>
 
-{% endblock %}", "./page/cards.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/templates/page/cards.html.twig");
+{% endblock %}", "./page/cards.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/templates/page/cards.html.twig");
     }
 }

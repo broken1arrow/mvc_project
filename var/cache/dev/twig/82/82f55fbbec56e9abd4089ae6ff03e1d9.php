@@ -14,7 +14,7 @@ use Twig\Source;
 use Twig\Template;
 use Twig\TemplateWrapper;
 
-/* page/about.html.twig */
+/* ./page/about.html.twig */
 class __TwigTemplate_da3c9e6b713e539aa47550116f73fe84 extends Template
 {
     private Source $source;
@@ -45,12 +45,12 @@ class __TwigTemplate_da3c9e6b713e539aa47550116f73fe84 extends Template
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "page/about.html.twig"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "./page/about.html.twig"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "page/about.html.twig"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "./page/about.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "page/about.html.twig", 1);
+        $this->parent = $this->loadTemplate("base.html.twig", "./page/about.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -124,7 +124,7 @@ class __TwigTemplate_da3c9e6b713e539aa47550116f73fe84 extends Template
      */
     public function getTemplateName(): string
     {
-        return "page/about.html.twig";
+        return "./page/about.html.twig";
     }
 
     /**
@@ -162,6 +162,6 @@ class __TwigTemplate_da3c9e6b713e539aa47550116f73fe84 extends Template
     </div>
 </main>
 
-{% endblock %}", "page/about.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/templates/page/about.html.twig");
+{% endblock %}", "./page/about.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/templates/page/about.html.twig");
     }
 }

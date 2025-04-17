@@ -836,6 +836,6 @@ class __TwigTemplate_55244013001daba319f17eb8e4a733bc extends Template
         {% endif %}
     </div>
 {% endblock %}
-", "@WebProfiler/Collector/command.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/vendor/symfony/web-profiler-bundle/Resources/views/Collector/command.html.twig");
+", "@WebProfiler/Collector/command.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/vendor/symfony/web-profiler-bundle/Resources/views/Collector/command.html.twig");
     }
 }

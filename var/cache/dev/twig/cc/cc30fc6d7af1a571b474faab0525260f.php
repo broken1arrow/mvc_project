@@ -1731,6 +1731,6 @@ $context["event"], "message", [], "any", false, false, false, 293), "headers", [
         {%- endif -%}
     {% endmacro %}
 {% endblock %}
-", "@WebProfiler/Collector/mailer.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/vendor/symfony/web-profiler-bundle/Resources/views/Collector/mailer.html.twig");
+", "@WebProfiler/Collector/mailer.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/vendor/symfony/web-profiler-bundle/Resources/views/Collector/mailer.html.twig");
     }
 }

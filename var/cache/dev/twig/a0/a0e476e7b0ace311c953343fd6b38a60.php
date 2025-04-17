@@ -391,6 +391,6 @@ class __TwigTemplate_7a8b45601a804727fc196eb783abc45e extends Template
 
 
 
-</html>", "base.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/templates/base.html.twig");
+</html>", "base.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/templates/base.html.twig");
     }
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    {% block stylesheets %}
+    {% endblock %}
+    <link rel="stylesheet" href="styles/style.css">
+
+    {% block javascripts %}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<header>
+    <nav>
+        <span>
+            <a href="./" class="{% if app.request.attributes.get('_route') == 'index' %}active{% endif %}">Home</a>
+        </span>
+        <span>
+            <a href="./report"
+                class="{% if app.request.attributes.get('_route') == 'report' %}active{% endif %}">Report</a>
+        </span>
+        <span>
+            <a href="./about"
+                class="{% if app.request.attributes.get('_route') == 'about' %}active{% endif %}">About</a>
+        </span>
+        <span>
+            <a href="./api" class="{% if app.request.attributes.get('_route') == 'api' %}active{% endif %}">Api</a>
+        </span>
+        <span>
+            <a href="./cards" class="{% if app.request.attributes.get('_route') == 'cards' %}active{% endif %}">Cards</a>
+        </span>
+
+        {# <span>
+            <a href="index" class="<%=activePage === '/index' ? 'active' : '' %>">Index</a>
+        </span>
+        <span>
+            <a href="category" class="<%=activePage === '/category' ? 'active' : '' %>">Category</a>
+        </span>
+        <span>
+            <a href="product" class="<%=activePage === '/product' ? 'active' : '' %>">Product</a>
+        </span>
+        <span>
+            <a href="edit-product" class="<%=activePage === '/edit-product' ? 'active' : '' %>">Edit product</a>
+        </span>
+        <span>
+            <a href="customers" class="<%=activePage === '/customers' ? 'active' : '' %>">Customers</a>
+        </span>
+        <span>
+            <a href="shop" class="<%=activePage === '/shop' ? 'active' : '' %>">Shop</a>
+        </span>
+        <span>
+            <a href="orders" class="<%=activePage === '/orders' ? 'active' : '' %>">Orders</a>
+        </span>
+        <span>
+            <a href="plock" class="<%=activePage === '/plock' ? 'active' : '' %>">Plock</a>
+        </span>
+        <span>
+            <a href="about" class="<%=activePage === '/about' ? 'active' : '' %>">About</a>
+        </span> #}
+    </nav>
+</header>
+
+<body>
+    {% block body %}{% endblock %}
+    {% include 'footer.html.twig' %}
+    {% block script %}{% endblock %}
+</body>
+
+
+
+
+</html>

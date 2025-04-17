@@ -495,6 +495,6 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
 
     });
 </script>
-{% endblock %}", "./page/report.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/rapport/templates/page/report.html.twig");
+{% endblock %}", "./page/report.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/templates/page/report.html.twig");
     }
 }

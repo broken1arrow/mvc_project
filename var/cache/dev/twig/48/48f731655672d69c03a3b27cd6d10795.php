@@ -178,6 +178,6 @@ class __TwigTemplate_3a4cde7bb0437260e09d129174599b16 extends Template
     <div style=\"font-size: 3rem;color:red\">🂱</div>
 </main>
 
-{% endblock %}", "./page/api.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/public/templates/page/api.html.twig");
+{% endblock %}", "./page/api.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/templates/page/api.html.twig");
     }
 }
