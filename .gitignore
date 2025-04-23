@@ -1,4 +1,4 @@
-###Non public info local path###
+###Non public info only local, meaning it should never end up on github###
 /public/.htaccess
 public/.htaccess
 templates/page/report.html.twig
