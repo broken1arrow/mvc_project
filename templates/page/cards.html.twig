@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+{% block body %}
+
+<main>
+    {% block cards %}
+    <div>
+        {% if cards is defined %}
+        <div
+            style="display: grid; grid-template-columns: repeat(13, 1fr);padding: 1em;row-gap: 1em; column-gap: 0.5em;background-color: #0650103b;">
+            {{cards|raw}}
+        </div>
+        {% endif %}
+        <div style="display: flex; flex-direction: column; margin-bottom:3em ;padding: 2em;">
+            <form method="post">
+                <fieldset>
+                    <legend style="font-size: 2rem;">Deck options</legend>
+                    <table style="width: 100%;">
+                        <tr>
+
+                            <th><input class="table_button" type="submit" name="deck" value="deck"> </th>
+                            <th> <input class="table_button" type="submit" name="shuffel" value="shuffel"> </th>
+                            <th> <input class="table_button" type="submit" name="draw" value="draw"></th>
+                            <th> <input class="table_button" type="submit" name="reset" value="reset"></th>
+                        
+                        </tr>
+                        <tr>
+                          
+                                <table style="width: 40%;">
+                                    <tr>
+                                        <th> <input style="width: 50%;" type="number" name="draw-amount-min" min="0" max="52" placeholder="min"></th>
+                                        <th> <input style="width: 50%;" type="number" name="draw-amount-max" min="1" max="52" placeholder="max"></th>
+                                        <th> <input class="table_button" type="submit" name="draw-amount"
+                                                value="draw amount"></th>
+                                    </tr>
+                                </table>
+                           
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+</main>
+
+{% endblock %}

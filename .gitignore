@@ -1,0 +1,8 @@
+###Non public info local path###
+/public/.htaccess
+public/.htaccess
+templates/page/report.html.twig
+.env
+.env
+.env.dev
+.env.test
