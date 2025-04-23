@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\cards\CardsHandler;
+use App\game\CardsUtility;
 use SebastianBergmann\Environment\Console;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +17,12 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class ControllPage extends AbstractController
 {
     private CardsHandler $cardsHandler;
+    private CardsUtility $cardsUtility;
 
     public function __construct()
     {
         $this->cardsHandler = new CardsHandler();
+        $this->cardsUtility = new CardsUtility();
     }
 
     #[Route('/', name: 'index')]
@@ -55,10 +58,10 @@ class ControllPage extends AbstractController
     public function api(): Response
     {
         $some = [
-            "api" => "api", 
-            "about" => "about", 
-            "report" => "report", 
-            "index" => "/", 
+            "api" => "api",
+            "about" => "about",
+            "report" => "report",
+            "index" => "/",
             "quote" => "api/quote",
             "cards" => "cards"
         ];
@@ -124,7 +127,7 @@ class ControllPage extends AbstractController
             if ($min >= $max)
                 $min = max(0, $max - 1);
             $cardsToAdd = array_slice($cardsList, $min, $max - $min);
-           
+
             $cardToSelect = [];
             foreach ($cardsToAdd as $card) {
                 $cardToSelect[] = $card;
@@ -230,6 +233,16 @@ class ControllPage extends AbstractController
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
+            'cards' => $cards ?? null
+        ]);
+    }
+
+    #[Route('/game', name: 'game', methods: ['GET', 'POST'])]
+    public function game(Request $request, SessionInterface $session): Response
+    {
+        $cards = implode("", array_values($this->cardsUtility->getCards()));
+        return $this->render('./page/game.html.twig', [
+            'title' => 'Game',
             'cards' => $cards ?? null
         ]);
     }

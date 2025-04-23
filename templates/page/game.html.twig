@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+{% block body %}
+
+<main>
+    {% block cards %}
+    <div>
+        <div style="font-size: 3rem;color: red;grid-column: 1/-1;">Don't sneekpeek....</div>
+        {% if cards != null %}
+        <div
+            style="display: grid; grid-template-columns: repeat(13, 1fr);padding: 1em;row-gap: 1em; column-gap: 0.5em;background-color: #0650103b;">
+            {{cards|raw}}
+        </div>
+        {% else %}
+        <div style="font-size: 3rem;color: red;">Don't sneekpeek....</div>
+        {% endif %}
+        <div style="display: flex; flex-direction: column; margin-bottom:3em ;padding: 2em;">
+            <form method="post">
+                <fieldset>
+                    <legend style="font-size: 2rem;">Deck options</legend>
+                    <table style="width: 100%;">
+                        <tr>
+
+                            <th><input class="table_button" type="submit" name="deck" value="start"> </th>
+                            <th> <input class="table_button" type="submit" name="shuffel" value="stop"> </th>
+                            <th> <input class="table_button" type="submit" name="draw" value="draw"></th>
+                            <th> <input class="table_button" type="submit" name="reset" value="reset"></th>
+
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+</main>
+
+{% endblock %}
