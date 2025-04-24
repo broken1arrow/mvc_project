@@ -1765,3 +1765,17 @@ b17d6b,::1,POST,http://localhost:8889/cards,1744871774,,200,request
 3dd032,::1,POST,http://localhost:8889/cards,1744871775,,200,request
 f3577b,::1,POST,http://localhost:8889/cards,1744871779,,200,request
 d9a6f9,::1,POST,http://localhost:8889/cards,1744871781,,200,request
+be2542,::1,GET,http://localhost:8889/cards,1745495739,,200,request
+492bfd,::1,GET,http://localhost:8889/game,1745495741,,200,request
+3ddc2f,::1,GET,http://localhost:8889/cards,1745495743,,200,request
+2cba6d,::1,GET,http://localhost:8889/api,1745495744,,200,request
+022815,::1,GET,http://localhost:8889/about,1745495745,,200,request
+266237,::1,GET,http://localhost:8889/report,1745495746,668652,500,request
+668652,::1,GET,http://localhost:8889/report,1745495746,,500,request
+3a4aab,::1,GET,http://localhost:8889/report,1745495801,,200,request
+257dbf,::1,GET,http://localhost:8889/,1745495803,,200,request
+5f2fe8,::1,GET,http://localhost:8889/report,1745495805,,200,request
+6bbd67,::1,GET,http://localhost:8889/about,1745495806,,200,request
+eb3090,::1,GET,http://localhost:8889/api,1745495807,,200,request
+c4aa94,::1,GET,http://localhost:8889/cards,1745495809,,200,request
+731d04,::1,GET,http://localhost:8889/game,1745495809,,200,request

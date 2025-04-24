@@ -365,6 +365,10 @@
       </call>
     </service>
     <service id="App\cards\CardsHandler" class="App\cards\CardsHandler" autowire="true" autoconfigure="true"/>
+    <service id="App\game\CardsData" class="App\game\CardsData" autowire="true" autoconfigure="true">
+      <tag name="container.error" message="Cannot autowire service &quot;App\game\CardsData&quot;: argument &quot;$htmlData&quot; of method &quot;__construct()&quot; is type-hinted &quot;string&quot;, you should configure its value explicitly."/>
+    </service>
+    <service id="App\game\CardsUtility" class="App\game\CardsUtility" autowire="true" autoconfigure="true"/>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="argument_resolver.backed_enum_resolver" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">
       <tag priority="100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\BackedEnumValueResolver">controller.argument_value_resolver</tag>

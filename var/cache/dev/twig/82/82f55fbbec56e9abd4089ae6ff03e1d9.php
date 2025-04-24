@@ -101,11 +101,13 @@ class __TwigTemplate_da3c9e6b713e539aa47550116f73fe84 extends Template
 <main>
     <div>
         <h1>About</h1>
-        <p>This site is just made by me, with code ideas from the internet (not rip off directly but as assistant
-            what I can use to get the result I want). But the design it self is just after what I thought is easy to
-            code and others to use, furthermore also limited of my abilities and knowledge.
-        <p>
-
+        <div style=\"margin: 2em;\">
+            <p>This site is just made by me, with code ideas from the internet (not rip off directly but as assistant
+                what I can use to get the result I want). But the design it self is just after what I thought is easy to
+                code and others to use, furthermore also limited of my abilities and knowledge.
+            <p>
+                <a href=\"https://github.com/broken1arrow/mvc_project\" target=\"_blank\">Link to github</a>
+        </div>
     </div>
 </main>
 
@@ -154,11 +156,13 @@ class __TwigTemplate_da3c9e6b713e539aa47550116f73fe84 extends Template
 <main>
     <div>
         <h1>About</h1>
-        <p>This site is just made by me, with code ideas from the internet (not rip off directly but as assistant
-            what I can use to get the result I want). But the design it self is just after what I thought is easy to
-            code and others to use, furthermore also limited of my abilities and knowledge.
-        <p>
-
+        <div style=\"margin: 2em;\">
+            <p>This site is just made by me, with code ideas from the internet (not rip off directly but as assistant
+                what I can use to get the result I want). But the design it self is just after what I thought is easy to
+                code and others to use, furthermore also limited of my abilities and knowledge.
+            <p>
+                <a href=\"https://github.com/broken1arrow/mvc_project\" target=\"_blank\">Link to github</a>
+        </div>
     </div>
 </main>
 

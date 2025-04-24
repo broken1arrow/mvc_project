@@ -101,8 +101,6 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
 
         // line 7
         yield "
-
-
 <main>
     <div style=\"display: inline-flex;flex-direction: column;justify-items: center;align-items: center;\">
 
@@ -224,10 +222,93 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
             <section>
                 <details id=\"kmom02\">
                     <summary>Click! Kmom02 </summary>
-                    <h3>Hur känns det att komma igång med databaser, klienter och SQL - är det något du ser fram emot
-                        eller
-                        fasar inför?
+                    <h3>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och
+                        hur de används i PHP.
                     </h3>
+                    <p>Är bättre vi håller oss till de engelska orden inheritance, composition och interface. Nu när man
+                        hållit på så länge så associerar jag inte mitt kodbyggande med namn på mönstret. Bland annat
+                        code
+                        patterns där det finns build pattern, factory pattern, observer pattern osv. Samma sak är det
+                        just med dessa tre, de jag bryr mig om är extends/implements och interface bland annat. Just för
+                        dessa är nykelord för bygga valid klass. För du kan inte skriva \"public class something
+                        inheritance another\". Just composition är inget jag hört förrut som benämning, utan jag använder
+                        de utan att tänka på de har något speciellt namn.
+                    </p>
+                    <p> Men kort förklaring om inheritance, är att du har en huvudklass (Parent) med methoder/funtioner
+                        som ska vara basen för en funtion, sen kanske du vill utöka funtionen. Jag tar det klasiska
+                        exemplet med former. Du kanske vill kuna rita alternativt beräkna inte bara fyrkanter, utan
+                        också cirklar och rektanglar. Så för minska dubliterande kod där alla objekt delar samma färg
+                        eller matimakisk formel. Men kan också vara methoder som antingen du måste ta med i din class
+                        (klassen är då abstract, tar detaljer om interface senare) eller vill skriva över i din sub
+                        class (child) för ska rita en korrekt cirkel eller beräkna cirekln korrekt. Nu är detta mesta
+                        erfarenheter i Java, men PHP bör inte skilja sig så mycket på denna punkten. Så också kul sak i
+                        dokumentationen https://www.php.net/manual/en/language.oop5.inheritance.php \" When you define a
+                        class with abstract, any attempt to instantiate a separate instance of it will result in a fatal
+                        error\" detta går utmärkt att göra i Java, så vet inte om de någon som inte har koll eller unikt
+                        för PHP.
+                    </p>
+                    <p>Just composition hade jag omöjligt kunnat svara på utan en google sökning (första hade varit svår
+                        utan någon ledtråd men denna är värre). Helt enkelt en klass har en eller flera
+                        koppling/förhållande till en eller flera andra klasser. Men denna koppling är inte lika stark
+                        som just inheritance. Största skillnaden är du kan bara ha en inheritance i varje klass (sett
+                        lite olika rund detta, men utgår ifrån Java).
+                    </p>
+                    <p> Just interface, är något jag använder hel del när bygger API för andra ska komma åt methoder
+                        från externt/annat program smidigt. Har inte testat detta i PHP, men i Java kan du bygga de som
+                        en abstrakt klass bortsett från konstruktorn. Vissa anser just default var ett misstag att
+                        implementera. Verkar inte finnas något liknande PHP ännu, men de verkar som du kan sätta en
+                        konstruktor. Vidare finns de inte någon begränsning hur många interface en klass kan ha, så man
+                        kan komma runt problemet med inheritance, genom att använda interface. Utöver detta så är tanken
+                        den ska innehålla metoder din klass ska implementera och beronde på implementering så brukar man
+                        kalla (invoke) dessa methoder/funtioner i koden just från interface och många gånger har väg för
+                        dig att registera dina klassar som implementera just detta interface. Men finns ju andra områden
+                        man kan använda interface också, men är de vanligaste jag använder den till och sen bygga egen
+                        lambda function/consumer.
+                    </p>
+                    <p>Får inte glömma trait, har ingen efarnehet av denna. Så har inte testat den, för kunna se vad
+                        för nytta denna har. De har inte behövts för utföra denna uppgioften i alla fall, kanske hade
+                        gjort koden snyggare.
+                    </p>
+                    <h3>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd,
+                        vilken förbättringspotential ser du i din koden och dina klasser?
+                    </h3>
+                    <p> Ni lär inte bli nöjda i alla fall, löste de enkeklt med 1 sida. De andra sidorna är mer dit
+                        lagda för inte orsaka felmeddelanden. förutom cache delen, som fungerar fint. Vet inte hur max
+                        och min är tänkt fungera, men du kommer inte kunna dra mer än den mängt kort som finns kvar (så
+                        även om du försöker över max mängd kommer den inte gå över mängden kort du har kvar). Behövdes
+                        inte mycket kod för lösa uppgiften, mesta tiden tog skapandet av arrayen med kort och få till
+                        knapparna och lösa hur man skulle få knapparna fungera. Krävdes lite mer för få just min och max
+                        fungera, dock vet jag inte hur URL alternativet ska fungera realistiskt, så de finns inte som
+                        alternativ just nu.
+                    </p>
+                    <p>Är svårt att bättra på koden, när man inte har mycket kod eller logik. Är bara enkel array eller
+                        som jag skulle kalla de \"map\" just för de har en nykel och inte bara ett värde. Ett övergripande
+                        drag över denna kursen har varit bristfälligt med information. Så man har fått själv fylla i
+                        hålen och som sagt en som jobbat hel del med just kod väljer oftas den kortaste vägen till
+                        mål. Inte krånglar till saker i onödan.
+                    </p>
+                    <h3>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC?
+                    </h3>
+                    <p>Är bättre än förra ramverket Pico, är renare och färre buggar. Men fungerar ju inte bättre på
+                        skolservern, Så får väl gå över till klasiska vägen och skriva sidorna som jag gjort tidigare
+                        med just ren html och php. Men kommer kräva mer jobb och vet inte hur man ska hinna med de
+                        relalistiskt. För verkar just nu vara de stabilaste alternativet för få allt att faktiskt
+                        fungera.
+                    </p>
+                    <h3>Vilken har du lärt dig i denna kursdelen?
+                    </h3>
+                    <p>Jag har inte lärt mig så mycket nytt, men vist vissa delar har man fått lite mer informartion om.
+                        Jag
+                        har inte rört trait, känns lite som en utility class, där man har statiska methoder. Känns ju
+                        lite knölare än att jobba med sådant i Java där man kan direkt göra methoderna statiska. Ju mer
+                        jag kollar in just trait, känns det mer som ett hack. Jag hade använt composition och kan enkelt
+                        återanvända den klassen till andra klasser, den klassen kan ju i sin tur använda interface eller
+                        inheritance om så behövs. Du ser ju hur lite faktisk kod som behövs för just dessa simpla
+                        funtioner, ser just för dessa delar att de behövs massa små klasser. De kanske behövs i fall man
+                        ska bygga ut detta ytterligare. Jag håller de kort och enkeklt, för de gillades inte sist när
+                        jag gjorde verktyg för kunna jobba snabbt och smidigt (jag vet inte exakt vad som jag borde
+                        gjort om, men men).
+                    </p>
                 </details>
             </section>
             <section>
@@ -258,7 +339,7 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
         yield from [];
     }
 
-    // line 157
+    // line 238
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -271,7 +352,7 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "script"));
 
-        // line 158
+        // line 239
         yield "
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -318,7 +399,7 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  275 => 158,  262 => 157,  103 => 7,  90 => 6,  65 => 3,  42 => 1,);
+        return array (  356 => 239,  343 => 238,  103 => 7,  90 => 6,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -329,8 +410,6 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
 {% endblock %}
 
 {% block body %}
-
-
 
 <main>
     <div style=\"display: inline-flex;flex-direction: column;justify-items: center;align-items: center;\">
@@ -453,10 +532,93 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
             <section>
                 <details id=\"kmom02\">
                     <summary>Click! Kmom02 </summary>
-                    <h3>Hur känns det att komma igång med databaser, klienter och SQL - är det något du ser fram emot
-                        eller
-                        fasar inför?
+                    <h3>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och
+                        hur de används i PHP.
                     </h3>
+                    <p>Är bättre vi håller oss till de engelska orden inheritance, composition och interface. Nu när man
+                        hållit på så länge så associerar jag inte mitt kodbyggande med namn på mönstret. Bland annat
+                        code
+                        patterns där det finns build pattern, factory pattern, observer pattern osv. Samma sak är det
+                        just med dessa tre, de jag bryr mig om är extends/implements och interface bland annat. Just för
+                        dessa är nykelord för bygga valid klass. För du kan inte skriva \"public class something
+                        inheritance another\". Just composition är inget jag hört förrut som benämning, utan jag använder
+                        de utan att tänka på de har något speciellt namn.
+                    </p>
+                    <p> Men kort förklaring om inheritance, är att du har en huvudklass (Parent) med methoder/funtioner
+                        som ska vara basen för en funtion, sen kanske du vill utöka funtionen. Jag tar det klasiska
+                        exemplet med former. Du kanske vill kuna rita alternativt beräkna inte bara fyrkanter, utan
+                        också cirklar och rektanglar. Så för minska dubliterande kod där alla objekt delar samma färg
+                        eller matimakisk formel. Men kan också vara methoder som antingen du måste ta med i din class
+                        (klassen är då abstract, tar detaljer om interface senare) eller vill skriva över i din sub
+                        class (child) för ska rita en korrekt cirkel eller beräkna cirekln korrekt. Nu är detta mesta
+                        erfarenheter i Java, men PHP bör inte skilja sig så mycket på denna punkten. Så också kul sak i
+                        dokumentationen https://www.php.net/manual/en/language.oop5.inheritance.php \" When you define a
+                        class with abstract, any attempt to instantiate a separate instance of it will result in a fatal
+                        error\" detta går utmärkt att göra i Java, så vet inte om de någon som inte har koll eller unikt
+                        för PHP.
+                    </p>
+                    <p>Just composition hade jag omöjligt kunnat svara på utan en google sökning (första hade varit svår
+                        utan någon ledtråd men denna är värre). Helt enkelt en klass har en eller flera
+                        koppling/förhållande till en eller flera andra klasser. Men denna koppling är inte lika stark
+                        som just inheritance. Största skillnaden är du kan bara ha en inheritance i varje klass (sett
+                        lite olika rund detta, men utgår ifrån Java).
+                    </p>
+                    <p> Just interface, är något jag använder hel del när bygger API för andra ska komma åt methoder
+                        från externt/annat program smidigt. Har inte testat detta i PHP, men i Java kan du bygga de som
+                        en abstrakt klass bortsett från konstruktorn. Vissa anser just default var ett misstag att
+                        implementera. Verkar inte finnas något liknande PHP ännu, men de verkar som du kan sätta en
+                        konstruktor. Vidare finns de inte någon begränsning hur många interface en klass kan ha, så man
+                        kan komma runt problemet med inheritance, genom att använda interface. Utöver detta så är tanken
+                        den ska innehålla metoder din klass ska implementera och beronde på implementering så brukar man
+                        kalla (invoke) dessa methoder/funtioner i koden just från interface och många gånger har väg för
+                        dig att registera dina klassar som implementera just detta interface. Men finns ju andra områden
+                        man kan använda interface också, men är de vanligaste jag använder den till och sen bygga egen
+                        lambda function/consumer.
+                    </p>
+                    <p>Får inte glömma trait, har ingen efarnehet av denna. Så har inte testat den, för kunna se vad
+                        för nytta denna har. De har inte behövts för utföra denna uppgioften i alla fall, kanske hade
+                        gjort koden snyggare.
+                    </p>
+                    <h3>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd,
+                        vilken förbättringspotential ser du i din koden och dina klasser?
+                    </h3>
+                    <p> Ni lär inte bli nöjda i alla fall, löste de enkeklt med 1 sida. De andra sidorna är mer dit
+                        lagda för inte orsaka felmeddelanden. förutom cache delen, som fungerar fint. Vet inte hur max
+                        och min är tänkt fungera, men du kommer inte kunna dra mer än den mängt kort som finns kvar (så
+                        även om du försöker över max mängd kommer den inte gå över mängden kort du har kvar). Behövdes
+                        inte mycket kod för lösa uppgiften, mesta tiden tog skapandet av arrayen med kort och få till
+                        knapparna och lösa hur man skulle få knapparna fungera. Krävdes lite mer för få just min och max
+                        fungera, dock vet jag inte hur URL alternativet ska fungera realistiskt, så de finns inte som
+                        alternativ just nu.
+                    </p>
+                    <p>Är svårt att bättra på koden, när man inte har mycket kod eller logik. Är bara enkel array eller
+                        som jag skulle kalla de \"map\" just för de har en nykel och inte bara ett värde. Ett övergripande
+                        drag över denna kursen har varit bristfälligt med information. Så man har fått själv fylla i
+                        hålen och som sagt en som jobbat hel del med just kod väljer oftas den kortaste vägen till
+                        mål. Inte krånglar till saker i onödan.
+                    </p>
+                    <h3>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC?
+                    </h3>
+                    <p>Är bättre än förra ramverket Pico, är renare och färre buggar. Men fungerar ju inte bättre på
+                        skolservern, Så får väl gå över till klasiska vägen och skriva sidorna som jag gjort tidigare
+                        med just ren html och php. Men kommer kräva mer jobb och vet inte hur man ska hinna med de
+                        relalistiskt. För verkar just nu vara de stabilaste alternativet för få allt att faktiskt
+                        fungera.
+                    </p>
+                    <h3>Vilken har du lärt dig i denna kursdelen?
+                    </h3>
+                    <p>Jag har inte lärt mig så mycket nytt, men vist vissa delar har man fått lite mer informartion om.
+                        Jag
+                        har inte rört trait, känns lite som en utility class, där man har statiska methoder. Känns ju
+                        lite knölare än att jobba med sådant i Java där man kan direkt göra methoderna statiska. Ju mer
+                        jag kollar in just trait, känns det mer som ett hack. Jag hade använt composition och kan enkelt
+                        återanvända den klassen till andra klasser, den klassen kan ju i sin tur använda interface eller
+                        inheritance om så behövs. Du ser ju hur lite faktisk kod som behövs för just dessa simpla
+                        funtioner, ser just för dessa delar att de behövs massa små klasser. De kanske behövs i fall man
+                        ska bygga ut detta ytterligare. Jag håller de kort och enkeklt, för de gillades inte sist när
+                        jag gjorde verktyg för kunna jobba snabbt och smidigt (jag vet inte exakt vad som jag borde
+                        gjort om, men men).
+                    </p>
                 </details>
             </section>
             <section>

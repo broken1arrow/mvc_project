@@ -117,23 +117,30 @@ class __TwigTemplate_7a8b45601a804727fc196eb783abc45e extends Template
         }
         yield "\">Cards</a>
         </span>
-
+        <span>
+            <a href=\"./game\" class=\"";
+        // line 37
+        if ((CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 37, $this->source); })()), "request", [], "any", false, false, false, 37), "attributes", [], "any", false, false, false, 37), "get", ["_route"], "method", false, false, false, 37) == "game")) {
+            yield "active";
+        }
+        yield "\">Game</a>
+        </span>
         ";
-        // line 64
+        // line 66
         yield "    </nav>
 </header>
 
 <body>
     ";
-        // line 68
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 69
-        yield "    ";
-        yield from $this->loadTemplate("footer.html.twig", "base.html.twig", 69)->unwrap()->yield($context);
         // line 70
+        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
+        // line 71
+        yield "    ";
+        yield from $this->loadTemplate("footer.html.twig", "base.html.twig", 71)->unwrap()->yield($context);
+        // line 72
         yield "    ";
         yield from $this->unwrap()->yieldBlock('script', $context, $blocks);
-        // line 71
+        // line 73
         yield "</body>
 
 
@@ -246,7 +253,7 @@ class __TwigTemplate_7a8b45601a804727fc196eb783abc45e extends Template
         yield from [];
     }
 
-    // line 68
+    // line 70
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -268,7 +275,7 @@ class __TwigTemplate_7a8b45601a804727fc196eb783abc45e extends Template
         yield from [];
     }
 
-    // line 70
+    // line 72
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -311,7 +318,7 @@ class __TwigTemplate_7a8b45601a804727fc196eb783abc45e extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  272 => 70,  250 => 68,  227 => 14,  216 => 15,  213 => 14,  200 => 13,  189 => 10,  176 => 9,  153 => 6,  137 => 71,  134 => 70,  131 => 69,  129 => 68,  123 => 64,  115 => 34,  107 => 31,  99 => 28,  90 => 24,  81 => 20,  75 => 16,  73 => 13,  69 => 11,  67 => 9,  61 => 6,  54 => 1,);
+        return array (  279 => 72,  257 => 70,  234 => 14,  223 => 15,  220 => 14,  207 => 13,  196 => 10,  183 => 9,  160 => 6,  144 => 73,  141 => 72,  138 => 71,  136 => 70,  130 => 66,  123 => 37,  115 => 34,  107 => 31,  99 => 28,  90 => 24,  81 => 20,  75 => 16,  73 => 13,  69 => 11,  67 => 9,  61 => 6,  54 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -351,7 +358,9 @@ class __TwigTemplate_7a8b45601a804727fc196eb783abc45e extends Template
         <span>
             <a href=\"./cards\" class=\"{% if app.request.attributes.get('_route') == 'cards' %}active{% endif %}\">Cards</a>
         </span>
-
+        <span>
+            <a href=\"./game\" class=\"{% if app.request.attributes.get('_route') == 'game' %}active{% endif %}\">Game</a>
+        </span>
         {# <span>
             <a href=\"index\" class=\"<%=activePage === '/index' ? 'active' : '' %>\">Index</a>
         </span>

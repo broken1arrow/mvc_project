@@ -24,9 +24,10 @@ return [
         '/cards/deck/shuffle' => [[['_route' => 'shuffle', '_controller' => 'App\\Controller\\ControllPage::shuffle'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/cards/deck' => [[['_route' => 'deck', '_controller' => 'App\\Controller\\ControllPage::deck'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/cards/deck/draw' => [[['_route' => 'draw', '_controller' => 'App\\Controller\\ControllPage::draw'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/card/deck/draw/:number' => [[['_route' => 'draw-amount', '_controller' => 'App\\Controller\\ControllPage::drawAmount'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/cards/session/delete' => [[['_route' => 'session-delete', '_controller' => 'App\\Controller\\ControllPage::sessionDelete'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/cards/session' => [[['_route' => 'session', '_controller' => 'App\\Controller\\ControllPage::session'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/cards/deck/draw/:number' => [[['_route' => 'draw-amount', '_controller' => 'App\\Controller\\ControllPage::drawAmount'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/session/delete' => [[['_route' => 'session-delete', '_controller' => 'App\\Controller\\ControllPage::sessionDelete'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/session' => [[['_route' => 'session', '_controller' => 'App\\Controller\\ControllPage::session'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/game' => [[['_route' => 'game', '_controller' => 'App\\Controller\\ControllPage::game'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
