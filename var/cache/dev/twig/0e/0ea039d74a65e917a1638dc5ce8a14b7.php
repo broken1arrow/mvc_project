@@ -318,8 +318,15 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
                     </h3>
                 </details>
             </section>
-            <section style=\"margin-bottom: 1em;\">
+            <section>
                 <details id=\"kmom04\">
+                    <summary>Click! Kmom04 </summary>
+                    <h3>
+                    </h3>
+                </details>
+            </section>
+            <section style=\"margin-bottom: 1em;\">
+                <details id=\"kmom05\">
                     <summary>Click! Kmom04 </summary>
                     <h3>
                     </h3>
@@ -339,7 +346,7 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
         yield from [];
     }
 
-    // line 238
+    // line 245
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -352,7 +359,7 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "script"));
 
-        // line 239
+        // line 246
         yield "
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -399,7 +406,7 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  356 => 239,  343 => 238,  103 => 7,  90 => 6,  65 => 3,  42 => 1,);
+        return array (  363 => 246,  350 => 245,  103 => 7,  90 => 6,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -628,8 +635,15 @@ class __TwigTemplate_27ab49a29ef5f63a5f7ade64e5cde754 extends Template
                     </h3>
                 </details>
             </section>
-            <section style=\"margin-bottom: 1em;\">
+            <section>
                 <details id=\"kmom04\">
+                    <summary>Click! Kmom04 </summary>
+                    <h3>
+                    </h3>
+                </details>
+            </section>
+            <section style=\"margin-bottom: 1em;\">
+                <details id=\"kmom05\">
                     <summary>Click! Kmom04 </summary>
                     <h3>
                     </h3>

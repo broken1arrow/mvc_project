@@ -22,7 +22,6 @@ class ControllPage extends AbstractController
     public function __construct()
     {
         $this->cardsHandler = new CardsHandler();
-        $this->cardsUtility = new CardsUtility();
     }
 
     #[Route('/', name: 'index')]
@@ -42,6 +41,13 @@ class ControllPage extends AbstractController
         ]);
     }
 
+    #[Route('/luck', name: 'luck')]
+    public function luck(): Response
+    {
+        return $this->render('./page/luck.html.twig', [
+            'title' => 'Luck',
+        ]);
+    }
 
 
 
@@ -84,10 +90,26 @@ class ControllPage extends AbstractController
         ];
 
         $rand = array_rand($some, 1);
-
-        return $this->render('./page/api.html.twig', [
+        echo json_encode($some[$rand],true);
+        return $this->render('./page/api-blank.html.twig', [
             'title' => 'Quote',
             'routes' => json_encode($some[$rand], true),
+        ]);
+    }
+
+    #[Route('/api/game', name: 'game-stats', methods: ['GET', 'POST'])]
+    public function gameStats(Request $request, SessionInterface $session): Response
+    {
+        $cardsUtility = $this->cardsUtility = new CardsUtility($session);
+        $toJson[] = null;
+        foreach ($cardsUtility->getPlayerData() as $value) {
+            if ($value != null)
+                $toJson[] = "{$value->getHtmlData()}  value= {$value->getAmount()}";
+        }
+        echo json_encode($toJson, true);
+        return $this->render('./page/api-blank.html.twig', [
+            'title' => 'Quote',
+            'routes' => null,
         ]);
     }
 
@@ -240,7 +262,28 @@ class ControllPage extends AbstractController
     #[Route('/game', name: 'game', methods: ['GET', 'POST'])]
     public function game(Request $request, SessionInterface $session): Response
     {
-        $cards = implode("", array_values($this->cardsUtility->getCards()));
+        $cardsUtility = $this->cardsUtility = new CardsUtility($session);
+        $cards = null;
+        echo $request->request->has('start');
+        if ($request->request->has('start')) {
+            $cardsUtility->start();
+        }
+
+        if ($request->request->has('draw')) {
+            $cards = $cardsUtility->drawCard();
+        }
+
+        if ($request->request->has('reset')) {
+            $cardsUtility->reset();
+        }
+
+        if ($request->request->has('stop')) {
+            $cards = $cardsUtility->endRound();
+        }
+
+        if ($cards == null)
+            $cards = $cardsUtility->getPlayerCards();
+
         return $this->render('./page/game.html.twig', [
             'title' => 'Game',
             'cards' => $cards ?? null

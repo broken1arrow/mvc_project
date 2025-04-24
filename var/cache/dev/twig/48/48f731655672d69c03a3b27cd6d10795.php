@@ -104,9 +104,7 @@ class __TwigTemplate_3a4cde7bb0437260e09d129174599b16 extends Template
         // line 7
         yield from $this->unwrap()->yieldBlock('routes', $context, $blocks);
         // line 8
-        yield "    <div style=\"font-size: 3rem;\">🂡</div>
-    <div style=\"font-size: 3rem;color:red\">🂱</div>
-</main>
+        yield "</main>
 
 ";
         
@@ -162,7 +160,7 @@ class __TwigTemplate_3a4cde7bb0437260e09d129174599b16 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  122 => 7,  107 => 8,  105 => 7,  101 => 5,  88 => 4,  65 => 3,  42 => 1,);
+        return array (  120 => 7,  107 => 8,  105 => 7,  101 => 5,  88 => 4,  65 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -174,8 +172,6 @@ class __TwigTemplate_3a4cde7bb0437260e09d129174599b16 extends Template
 
 <main>
     {% block routes %}{{routes}}{% endblock %}
-    <div style=\"font-size: 3rem;\">🂡</div>
-    <div style=\"font-size: 3rem;color:red\">🂱</div>
 </main>
 
 {% endblock %}", "./page/api.html.twig", "/home/broken/school_work/dbwebb-kurser/mvc/me/report/templates/page/api.html.twig");
