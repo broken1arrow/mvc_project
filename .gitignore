@@ -32,3 +32,5 @@ templates/page/report.html.twig
 .env
 .env.dev
 .env.test
+public/img/uml_classes.drawio.png
+templates/page/doc.html.twig

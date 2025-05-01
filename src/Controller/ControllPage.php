@@ -310,4 +310,14 @@ class ControllPage extends AbstractController
             'cards' => $cards ?? null
         ]);
     }
+ 
+
+    #[Route('/game/doc', name: 'game-doc', methods: ['GET', 'POST'])]
+    public function gameDoc(Request $request, SessionInterface $session): Response
+    {
+        return $this->render('./page/doc.html.twig', [
+            'title' => 'Game doc'
+        ]);
+    }
+
 }
