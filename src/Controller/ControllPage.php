@@ -278,11 +278,12 @@ class ControllPage extends AbstractController
     {
         $cards = null;
         $cardsList = $session->get("cards");
+        if($cardsList != null)
         $cards = implode("", array_values($cardsList));
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? "No values in cache"
         ]);
     }
 
