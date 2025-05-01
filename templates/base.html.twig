@@ -31,10 +31,10 @@
             <a href="./api" class="{% if app.request.attributes.get('_route') == 'api' %}active{% endif %}">Api</a>
         </span>
         <span>
-            <a href="./cards" class="{% if app.request.attributes.get('_route') == 'cards' %}active{% endif %}">Cards</a>
+            <a href="{{path('cards')}}" class="{% if app.request.attributes.get('_route') == 'cards' %}active{% endif %}">Cards</a>
         </span>
         <span>
-            <a href="./game" class="{% if app.request.attributes.get('_route') == 'game' %}active{% endif %}">Game</a>
+            <a href="{{path('game')}}" class="{% if app.request.attributes.get('_route') == 'game' %}active{% endif %}">Game</a>
         </span>
         <span>
             <a href="./luck" class="{% if app.request.attributes.get('_route') == 'luck' %}active{% endif %}">Unlucky</a>

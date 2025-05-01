@@ -2,17 +2,15 @@
 
 namespace App\cards;
 
-class CardsHandler
+class CardsHandler extends CardLogic
 {
 
-
+    //In Java I using: @Override but apparently it is #[\Override] in PHP according to docs.
+    #[\Override]
     public function getCards(): array
     {
         return $this->cards;
     }
-
-
-
 
     private array $cards = [
         "1" => "<div class=\"card_item\">🂡</div>",

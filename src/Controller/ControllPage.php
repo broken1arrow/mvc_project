@@ -49,6 +49,13 @@ class ControllPage extends AbstractController
         ]);
     }
 
+    #[Route('/lucky', name: 'lucky_two')]
+    public function luckSecond(): Response
+    {
+        return $this->render('/page/luck.html.twig', [
+            'title' => 'Luck',
+        ]);
+    }
 
 
     #[Route('/about', name: 'about')]
@@ -90,11 +97,15 @@ class ControllPage extends AbstractController
         ];
 
         $rand = array_rand($some, 1);
-        echo json_encode($some[$rand],true);
-        return $this->render('./page/api-blank.html.twig', [
+        /*   return $this->render('./page/api-blank.html.twig', [
             'title' => 'Quote',
             'routes' => json_encode($some[$rand], true),
         ]);
+        ]); */
+        $response = new Response();
+        $response->setContent(json_encode(['Quote' => $some[$rand]], false));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     #[Route('/api/game', name: 'game-stats', methods: ['GET', 'POST'])]
@@ -102,9 +113,13 @@ class ControllPage extends AbstractController
     {
         $cardsUtility = $this->cardsUtility = new CardsUtility($session);
         $toJson[] = null;
-        foreach ($cardsUtility->getPlayerData() as $value) {
-            if ($value != null)
-                $toJson[] = "{$value->getHtmlData()}  value= {$value->getAmount()}";
+        if ($cardsUtility->getPlayerData() != null) {
+            foreach ($cardsUtility->getPlayerData() as $value) {
+                if ($value != null)
+                    $toJson[] = "{$value->getHtmlData()}  value= {$value->getAmount()}";
+            }
+        } else {
+            $toJson = ['data' => 'no data set'];
         }
         echo json_encode($toJson, true);
         return $this->render('./page/api-blank.html.twig', [
@@ -146,8 +161,14 @@ class ControllPage extends AbstractController
             $length = count($cardsList);
             $min = $request->get('draw-amount-min');
             $max = min($length, $request->get('draw-amount-max'));
+            
+            if ($max == null)
+                $max = $length;
+            if ($min == null)
+                $min =  0;
             if ($min >= $max)
                 $min = max(0, $max - 1);
+
             $cardsToAdd = array_slice($cardsList, $min, $max - $min);
 
             $cardToSelect = [];

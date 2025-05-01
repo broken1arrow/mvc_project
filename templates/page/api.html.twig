@@ -4,7 +4,14 @@
 {% block body %}
 
 <main>
-    {% block routes %}{{routes}}{% endblock %}
+    <div>
+        {% block routes %}{{routes}}{% endblock %}
+        <div style="display: flex; margin-top: 2em;">
+            <a class="button" href="./api/quote">Quote </a>
+            <a class="button" href="./api/game">Game </a>
+            <a class="button" href="./session">Session </a>
+        </div>
+    </div>
 </main>
 
 {% endblock %}
