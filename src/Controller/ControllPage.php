@@ -31,7 +31,13 @@ class ControllPage extends AbstractController
             'title' => 'Home alone',
         ]);
     }
-
+    #[Route('/index', name: 'index_empty')]
+    public function homeEmpty(): Response
+    {
+        return $this->render('./page/report.html.twig', [
+            'title' => 'Home alone',
+        ]);
+    }
 
     #[Route('/report', name: 'report')]
     public function raport(): Response

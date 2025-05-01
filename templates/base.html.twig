@@ -17,18 +17,18 @@
 <header>
     <nav>
         <span>
-            <a href="/" class="{% if app.request.attributes.get('_route') == 'index' %}active{% endif %}">Home</a>
+            <a href="{{path('index')}}" class="{% if app.request.attributes.get('_route') == 'index' %}active{% endif %}">Home</a>
         </span>
         <span>
-            <a href="/report"
+            <a href="{{path('report')}}"
                 class="{% if app.request.attributes.get('_route') == 'report' %}active{% endif %}">Report</a>
         </span>
         <span>
-            <a href="/about"
+            <a href="{{path('about')}}"
                 class="{% if app.request.attributes.get('_route') == 'about' %}active{% endif %}">About</a>
         </span>
         <span>
-            <a href="/api" class="{% if app.request.attributes.get('_route') == 'api' %}active{% endif %}">Api</a>
+            <a href="{{path('api')}}" class="{% if app.request.attributes.get('_route') == 'api' %}active{% endif %}">Api</a>
         </span>
         <span>
             <a href="{{path('cards')}}" class="{% if app.request.attributes.get('_route') == 'cards' %}active{% endif %}">Cards</a>
@@ -37,7 +37,7 @@
             <a href="{{path('game')}}" class="{% if app.request.attributes.get('_route') == 'game' %}active{% endif %}">Game</a>
         </span>
         <span>
-            <a href="/luck" class="{% if app.request.attributes.get('_route') == 'luck' %}active{% endif %}">Unlucky</a>
+            <a href="{{path('luck')}}" class="{% if app.request.attributes.get('_route') == 'luck' %}active{% endif %}">Unlucky</a>
         </span>
         {# <span>
             <a href="index" class="<%=activePage === '/index' ? 'active' : '' %>">Index</a>
