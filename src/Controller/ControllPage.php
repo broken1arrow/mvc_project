@@ -4,14 +4,15 @@
 namespace App\Controller;
 
 
-use App\cards\CardsHandler;
 use App\game\CardsUtility;
+use App\cards\CardsHandler;
+use App\cards\CardsShuffleGame;
 use SebastianBergmann\Environment\Console;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 class ControllPage extends AbstractController
@@ -137,63 +138,21 @@ class ControllPage extends AbstractController
     #[Route('/cards', name: 'cards', methods: ['GET', 'POST'])]
     public function cards(Request $request, SessionInterface $session): Response
     {
-        $cards = null;
-        /*    if (!$session->get("cards")) {
-            $session->set("cards", $this->cardsHandler->getCards());
-        } */
-        $cardsList = $session->get("cards");
+        $cardsShuffleGame = new CardsShuffleGame($request,$session);
+        $cards =  $cardsShuffleGame -> handleCards();
+        
+        return $this->render('/page/cards.html.twig', [
+            'title' => 'Cards',
+            'cards' => $cards ?? null
+        ]);
+    }
 
-        if ($cardsList && $request->request->has('deck')) {
-            $cards = implode("", array_values($cardsList));
-        }
-        if ($cardsList && $request->request->has('shuffel')) {
-            shuffle($cardsList);
-            $cards = implode("", array_values($cardsList));
-        }
-        if ($request->request->has('draw')) {
-            $deck = $session->get("cards");
-            if ($deck) {
-                $index = array_rand($deck);
-                $cards = $deck[$index];
-                unset($deck[$index]);
-                $session->set("cards", $deck);
-            } else {
-                $cards = "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must reset to draw new cards.</div>";
-            }
-        }
-
-        if ($cardsList && $request->request->has('draw-amount') && $request->request->has('draw-amount-min') && $request->request->has('draw-amount-max')) {
-            shuffle($cardsList);
-            $length = count($cardsList);
-            $min = $request->get('draw-amount-min');
-            $max = min($length, $request->get('draw-amount-max'));
-            
-            if ($max == null)
-                $max = $length;
-            if ($min == null)
-                $min =  0;
-            if ($min >= $max)
-                $min = max(0, $max - 1);
-
-            $cardsToAdd = array_slice($cardsList, $min, $max - $min);
-
-            $cardToSelect = [];
-            foreach ($cardsToAdd as $card) {
-                $cardToSelect[] = $card;
-            }
-
-            $cards = implode("", array_values($cardToSelect));
-
-            array_splice($cardsList, $min, $max - $min);
-            sort($cardsList);
-            $session->set("cards", $cardsList);
-        }
-
-        if ($request->request->has('reset')) {
-            $session->set("cards", $this->cardsHandler->getCards());
-        }
-
-        return $this->render('./page/cards.html.twig', [
+    #[Route('/card', name: 'card', methods: ['GET', 'POST'])]
+    public function card(Request $request, SessionInterface $session): Response
+    {
+        $cardsShuffleGame = new CardsShuffleGame($request,$session);
+        $cards =  $cardsShuffleGame -> handleCards();
+        return $this->render('/page/cards.html.twig', [
             'title' => 'Cards',
             'cards' => $cards ?? null
         ]);
@@ -248,8 +207,41 @@ class ControllPage extends AbstractController
         ]);
     }
 
+    #[Route('/cards/deck/card', name: 'card', methods: ['GET', 'POST'])]
+    public function drawCard(Request $request, SessionInterface $session): Response
+    {
+        $cards = null;
+        $deck = $this->cardsHandler->getCards();
+        if ($deck) {
+            $index = array_rand($deck);
+            $cards = $deck[$index];
+            unset($deck[$index]);
+            $session->set("cards", $deck);
+        } else {
+            $cards = "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must reset to draw new cards.</div>";
+        }
+
+        return $this->render('./page/cards.html.twig', [
+            'title' => 'Cards',
+            'cards' => $cards ?? null
+        ]);
+    }
+
     #[Route('cards/deck/draw/:number', name: 'draw-amount', methods: ['GET', 'POST'])]
     public function drawAmount(Request $request, SessionInterface $session): Response
+    {
+        $cards = null;
+        $cardsList = $session->get("cards");
+        $cards = implode("", array_values($cardsList));
+
+        return $this->render('./page/cards.html.twig', [
+            'title' => 'Cards',
+            'cards' => $cards ?? null
+        ]);
+    }
+
+    #[Route('cards/deck/card/:number', name: 'draw-amount-two', methods: ['GET', 'POST'])]
+    public function drawAmountCard(Request $request, SessionInterface $session): Response
     {
         $cards = null;
         $cardsList = $session->get("cards");
