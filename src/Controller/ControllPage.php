@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\game\CardsUtility;
 use App\cards\CardsHandler;
 use App\cards\CardsShuffleGame;
+use Random\Randomizer;
 use SebastianBergmann\Environment\Console;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,16 +52,22 @@ class ControllPage extends AbstractController
     #[Route('/luck', name: 'luck')]
     public function luck(): Response
     {
+        $randomizer = new Randomizer();
+        $random = $randomizer->getInt(0, 10000000);
         return $this->render('./page/luck.html.twig', [
             'title' => 'Luck',
+            'ran' => $random
         ]);
     }
 
     #[Route('/lucky', name: 'lucky_two')]
     public function luckSecond(): Response
     {
+        $randomizer = new Randomizer();
+        $random = $randomizer->getInt(0, 10000000);
         return $this->render('/page/luck.html.twig', [
             'title' => 'Luck',
+            'ran' => $random
         ]);
     }
 
@@ -138,9 +145,9 @@ class ControllPage extends AbstractController
     #[Route('/cards', name: 'cards', methods: ['GET', 'POST'])]
     public function cards(Request $request, SessionInterface $session): Response
     {
-        $cardsShuffleGame = new CardsShuffleGame($request,$session);
-        $cards =  $cardsShuffleGame -> handleCards();
-        
+        $cardsShuffleGame = new CardsShuffleGame($request, $session);
+        $cards =  $cardsShuffleGame->handleCards();
+
         return $this->render('/page/cards.html.twig', [
             'title' => 'Cards',
             'cards' => $cards ?? null
@@ -150,8 +157,8 @@ class ControllPage extends AbstractController
     #[Route('/card', name: 'card', methods: ['GET', 'POST'])]
     public function card(Request $request, SessionInterface $session): Response
     {
-        $cardsShuffleGame = new CardsShuffleGame($request,$session);
-        $cards =  $cardsShuffleGame -> handleCards();
+        $cardsShuffleGame = new CardsShuffleGame($request, $session);
+        $cards =  $cardsShuffleGame->handleCards();
         return $this->render('/page/cards.html.twig', [
             'title' => 'Cards',
             'cards' => $cards ?? null
@@ -270,8 +277,8 @@ class ControllPage extends AbstractController
     {
         $cards = null;
         $cardsList = $session->get("cards");
-        if($cardsList != null)
-        $cards = implode("", array_values($cardsList));
+        if ($cardsList != null)
+            $cards = implode("", array_values($cardsList));
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
@@ -309,7 +316,7 @@ class ControllPage extends AbstractController
             'cards' => $cards ?? null
         ]);
     }
- 
+
 
     #[Route('/game/doc', name: 'game-doc', methods: ['GET', 'POST'])]
     public function gameDoc(Request $request, SessionInterface $session): Response
@@ -318,5 +325,4 @@ class ControllPage extends AbstractController
             'title' => 'Game doc'
         ]);
     }
-
 }
