@@ -80,6 +80,10 @@ class CardsShuffleGame
                 $cards = implode("", array_values($cardsList));
             }
         }
+
+        if ($cards == null && $cardsList != null)
+            $cards = implode("", array_values($cardsList));
+        
         return $cards ??  null;
     }
 }

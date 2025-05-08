@@ -150,7 +150,8 @@ class ControllPage extends AbstractController
 
         return $this->render('/page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must click on reset to set new cards.</div>",
+            'sub_title' => "Deck options:"
         ]);
     }
 
@@ -161,9 +162,11 @@ class ControllPage extends AbstractController
         $cards =  $cardsShuffleGame->handleCards();
         return $this->render('/page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must click on reset to set new cards.</div>",
+            'sub_title' => "Deck options:"
         ]);
     }
+
 
     #[Route('/cards/deck/shuffle', name: 'shuffle', methods: ['GET', 'POST'])]
     public function shuffle(Request $request, SessionInterface $session): Response
@@ -176,7 +179,8 @@ class ControllPage extends AbstractController
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? null,
+            'sub_title' => "Deck options:"
         ]);
     }
 
@@ -189,7 +193,8 @@ class ControllPage extends AbstractController
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? null,
+            'sub_title' => "Deck options:"
         ]);
     }
 
@@ -210,11 +215,12 @@ class ControllPage extends AbstractController
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? null,
+            'sub_title' => "Deck options:"
         ]);
     }
 
-    #[Route('/cards/deck/card', name: 'card', methods: ['GET', 'POST'])]
+    #[Route('/cards/deck/card', name: 'card-one', methods: ['GET', 'POST'])]
     public function drawCard(Request $request, SessionInterface $session): Response
     {
         $cards = null;
@@ -230,7 +236,8 @@ class ControllPage extends AbstractController
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? null,
+            'sub_title' => "Deck options:"
         ]);
     }
 
@@ -243,7 +250,8 @@ class ControllPage extends AbstractController
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? null,
+            'sub_title' => "Deck options:"
         ]);
     }
 
@@ -256,19 +264,21 @@ class ControllPage extends AbstractController
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? null,
+            'sub_title' => "Deck options:"
         ]);
     }
 
     #[Route('session/delete', name: 'session-delete', methods: ['GET', 'POST'])]
     public function sessionDelete(Request $request, SessionInterface $session): Response
     {
-        $cards = null;
+        $cards = "<div class=\"card_item\" style=\"grid-column: 1/-1;\">Removed cache. You must click on reset to set new cards.</div>";
         $session->set("cards", null);
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? null
+            'cards' => $cards ?? null,
+            'sub_title' => "Removed"
         ]);
     }
 
@@ -282,7 +292,8 @@ class ControllPage extends AbstractController
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
-            'cards' => $cards ?? "No values in cache"
+            'cards' => $cards ?? "No values in cache",
+            'sub_title' => "Session"
         ]);
     }
 
