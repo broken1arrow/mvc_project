@@ -3,10 +3,8 @@
 namespace App\game;
 
 use App\game\CardsData;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-use function PHPUnit\Framework\returnSelf;
 
 class CardsUtility
 {
