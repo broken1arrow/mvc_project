@@ -34,3 +34,6 @@ templates/page/report.html.twig
 .env.test
 public/img/uml_classes.drawio.png
 templates/page/doc.html.twig
+docs/api/*
+.phpdoc/*
+tools/*
