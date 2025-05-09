@@ -130,7 +130,7 @@ class ControllPage extends AbstractController
         if ($cardsUtility->getPlayerData() != null) {
             foreach ($cardsUtility->getPlayerData() as $value) {
                 if ($value != null)
-                    $toJson[] = "{$value->getHtmlData()}  value= {$value->getAmount()}";
+                    $toJson[] = ["{$value->getHtmlData()}  " => "{$value->getAmount()}"];
             }
         } else {
             $toJson = ['data' => 'no data set'];
@@ -140,6 +140,28 @@ class ControllPage extends AbstractController
             'title' => 'Quote',
             'routes' => null,
         ]);
+    }
+
+    #[Route('/api/deck', name: 'deck-stats', methods: ['GET', 'POST'])]
+    public function deckStats(Request $request, SessionInterface $session): Response
+    {
+        $cards = $session->get("cards");
+        $toJson[] = [];
+        if ($cards != null) {
+            $index = 0;
+            foreach ($cards as $value) {
+                if ($value != null) {
+                    $toJson[] = ["{$index}" => "{$value}"];
+                    $index++;
+                }
+            }
+        } else {
+            $toJson = ['data' => 'no data set'];
+        }
+        $response = new Response();
+        $response->setContent(json_encode($toJson, false));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     #[Route('/cards', name: 'cards', methods: ['GET', 'POST'])]
@@ -172,7 +194,7 @@ class ControllPage extends AbstractController
     public function shuffle(Request $request, SessionInterface $session): Response
     {
         $cards = null;
-        $cardsList = $this->cardsHandler->getCards();
+        $cardsList = $session->get("cards");
 
         shuffle($cardsList);
         $cards = implode("", array_values($cardsList));
@@ -188,8 +210,12 @@ class ControllPage extends AbstractController
     public function deck(Request $request, SessionInterface $session): Response
     {
         $cards = null;
-        $cardsList = $this->cardsHandler->getCards();
-        $cards = implode("", array_values($cardsList));
+        $cardsList = $session->get("cards");
+        if ($cardsList != null) {
+            $cards = implode("", array_values($cardsList));
+        } else {
+            $cards = "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must reset to draw new cards.</div>";
+        }
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
@@ -203,8 +229,8 @@ class ControllPage extends AbstractController
     public function draw(Request $request, SessionInterface $session): Response
     {
         $cards = null;
-        $deck = $this->cardsHandler->getCards();
-        if ($deck) {
+        $deck = $session->get("cards");
+        if ($deck != null) {
             $index = array_rand($deck);
             $cards = $deck[$index];
             unset($deck[$index]);
@@ -224,8 +250,8 @@ class ControllPage extends AbstractController
     public function drawCard(Request $request, SessionInterface $session): Response
     {
         $cards = null;
-        $deck = $this->cardsHandler->getCards();
-        if ($deck) {
+        $deck = $session->get("cards");
+        if ($deck != null) {
             $index = array_rand($deck);
             $cards = $deck[$index];
             unset($deck[$index]);
@@ -246,7 +272,11 @@ class ControllPage extends AbstractController
     {
         $cards = null;
         $cardsList = $session->get("cards");
-        $cards = implode("", array_values($cardsList));
+        if ($cardsList != null) {
+            $cards = implode("", array_values($cardsList));
+        } else {
+            $cards = "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must reset to draw new cards.</div>";
+        }
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
@@ -260,7 +290,11 @@ class ControllPage extends AbstractController
     {
         $cards = null;
         $cardsList = $session->get("cards");
-        $cards = implode("", array_values($cardsList));
+        if ($cardsList != null) {
+            $cards = implode("", array_values($cardsList));
+        } else {
+            $cards = "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must reset to draw new cards.</div>";
+        }
 
         return $this->render('./page/cards.html.twig', [
             'title' => 'Cards',
