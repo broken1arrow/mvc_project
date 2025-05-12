@@ -1,9 +1,36 @@
 <?php
+
 namespace App\database;
 
-class DatabaseLogic{
+use App\Controller\ControllPage;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+class DatabaseLogic
+{
+    private Request $request;
+    private ControllPage $controller;
+
+    function __construct(Request $request, ControllPage $controller)
+    {
+        $this->request = $request;
+        $this->controller = $controller;
+    }
 
 
+    public function saveImage(): ?string
+    {
+        /**@var UploadedFile $uploadFile */
+        $uploadFile = $this->request->get('image');
+        if ($uploadFile == null)
+            return null;
 
-    
+        $destination = $this->controller->getParameter('kernel.project_dir') . '/public/uploads';
+
+        $orginalFilename = pathinfo($uploadFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $newFilename = $orginalFilename . "_" . uniqid() . "." . $uploadFile->guessExtension();
+
+        $uploadFile->move($destination, $newFilename);
+        return $newFilename;
+    }
 }

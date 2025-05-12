@@ -26,6 +26,11 @@ class ControllPage extends AbstractController
         $this->cardsHandler = new CardsHandler();
     }
 
+    public function getParameter(string $name): array|bool|string|int|float|\UnitEnum|null
+    {
+        return parent::getParameter($name);
+    }
+
     #[Route('/', name: 'index')]
     public function home(): Response
     {
@@ -368,6 +373,15 @@ class ControllPage extends AbstractController
     {
         return $this->render('./page/doc.html.twig', [
             'title' => 'Game doc'
+        ]);
+    }
+
+    #[Route('/library', name: 'library', methods: ['GET', 'POST'])]
+    public function library(Request $request, SessionInterface $session): Response
+    {
+
+        return $this->render('./page/library.html.twig', [
+            'title' => 'Library'
         ]);
     }
 }
