@@ -218,8 +218,25 @@ form {
 fieldset input {
     font-size: 2rem;
     background-color: #242424;
+    border-color: #000000;
+    border-radius: var(--table-radius);
+    color: #ffffff;
     margin-top: 2px;
     ;
+}
+
+fieldset textarea {
+    width: 435px;
+    height: 200px;
+    font-size: 0.8rem;
+    background-color: #242424;
+    color: #ffffff;
+    border-color: rgb(0, 0, 0);
+    border-radius: var(--table-radius);
+    margin-top: 2px;
+    padding-bottom: 25px;
+    box-sizing: border-box;
+    resize: vertical;
 }
 
 fieldset input:last-child {
@@ -251,6 +268,20 @@ fieldset {
     border-style: hidden;
     flex-direction: column;
 
+}
+
+.text-area {
+    position: relative;
+    width: 100%;
+}
+
+.counter {
+    position: absolute;
+    bottom: 5px;
+    right: 430px;
+    font-size: 0.8em;
+    color: rgb(18, 184, 35);
+    pointer-events: none;
 }
 
 .link-fieldset {
@@ -579,8 +610,8 @@ grid {
     display: flex;
 }
 
-.wrap-image p{
-line-height: 1.2;
+.wrap-image p {
+    line-height: 1.2;
 }
 
 .wrap-image .wrap-image-left:hover {
@@ -589,7 +620,10 @@ line-height: 1.2;
 }
 
 .wrap-image .wrap-image-left {
-    display: block ;width: 35%;float: left;margin: 0 0.5em 0.5em 0;
+    display: block;
+    width: 35%;
+    float: left;
+    margin: 0 0.5em 0.5em 0;
 }
 
 .wrap-image .wrap-image-right:hover {
@@ -598,7 +632,10 @@ line-height: 1.2;
 }
 
 .wrap-image .wrap-image-right {
-    display: block ;width: 35%;float: right;margin: 0 0 0 0.5em;
+    display: block;
+    width: 35%;
+    float: right;
+    margin: 0 0 0 0.5em;
 }
 
 /* 

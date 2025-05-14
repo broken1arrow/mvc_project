@@ -25,6 +25,26 @@ class someTest extends TestCase
 
         $cards = new CardsShuffleGame($request, $session);
         $this->assertEquals($cards->handleCards(), "<div class=\"card_item\">🂡</div>");
+        $session->set("cards", [
+            "1" => "<div class=\"card_item\">🂡</div>",
+            "2" => "<div class=\"card_item\">🂢</div>",
+            "3" => "<div class=\"card_item\">🂣</div>",
+            "4" => "<div class=\"card_item\">🂤</div>",
+            "5" => "<div class=\"card_item\">🂥</div>",
+            "6" => "<div class=\"card_item\">🂦</div>",
+            "7" => "<div class=\"card_item\">🂧</div>",
+            "8" => "<div class=\"card_item\">🂨</div>",
+            "9" => "<div class=\"card_item\">🂩</div>",
+            "10" => "<div class=\"card_item\">🂪</div>",
+        ]);
+        $request->request->set('draw', 5);
+        $request->request->set('draw-amount', 1);
+        $request->request->set('draw-amount-min', 1);
+        $request->request->set('draw-amount-max', 2);
+        $request->request->set('reset', 1);
+        $request->request->set('shuffle', 1);
+        $cards = new CardsShuffleGame($request, $session);
+        $this->assertEquals($cards->handleCards(), '<div class="card_item">🂡</div><div class="card_item">🂢</div><div class="card_item">🂣</div><div class="card_item">🂤</div><div class="card_item">🂥</div><div class="card_item">🂦</div><div class="card_item">🂧</div><div class="card_item">🂨</div><div class="card_item">🂩</div><div class="card_item">🂪</div><div class="card_item">🂫</div><div class="card_item">🂭</div><div class="card_item">🂮</div><div class="card_item">🃑</div><div class="card_item">🃒</div><div class="card_item">🃓</div><div class="card_item">🃔</div><div class="card_item">🃕</div><div class="card_item">🃖</div><div class="card_item">🃗</div><div class="card_item">🃘</div><div class="card_item">🃙</div><div class="card_item">🃚</div><div class="card_item">🃛</div><div class="card_item">🃝</div><div class="card_item">🃞</div><div class="card_item_red">🂱</div><div class="card_item_red">🂲</div><div class="card_item_red">🂳</div><div class="card_item_red">🂴</div><div class="card_item_red">🂵</div><div class="card_item_red">🂶</div><div class="card_item_red">🂷</div><div class="card_item_red">🂸</div><div class="card_item_red">🂹</div><div class="card_item_red">🂺</div><div class="card_item_red">🂻</div><div class="card_item_red">🂽</div><div class="card_item_red">🂾</div><div class="card_item_red">🃁</div><div class="card_item_red">🃂</div><div class="card_item_red">🃃</div><div class="card_item_red">🃄</div><div class="card_item_red">🃅</div><div class="card_item_red">🃆</div><div class="card_item_red">🃇</div><div class="card_item_red">🃈</div><div class="card_item_red">🃉</div><div class="card_item_red">🃊</div><div class="card_item_red">🃋</div><div class="card_item_red">🃍</div><div class="card_item_red">🃎</div>');
     }
 
     public function testGameGame()

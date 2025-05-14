@@ -86,7 +86,7 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "phpunit": "php -d XDEBUG_MODE=coverage bin/phpunit"
+        "phpunit": "php -d XDEBUG_MODE=coverage bin/phpunit --coverage-html docs/coverage"
     },
     "conflict": {
         "symfony/symfony": "*"

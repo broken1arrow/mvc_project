@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+
+<main>
+    <div>
+        <h1>Library</h1>
+        <div style="margin: 2em;">
+            <div
+                style="border-radius: 0.5em;border: 0.2px solid black;background-color: #116811;padding: 2px;box-shadow: 8px 5px 15px 2px black;">
+                <form method="post" style="border: none;box-shadow:none;">
+                    <fieldset>
+                        <table style="width: 100%;">
+                            <tr>
+                                <th>
+                                    <div class="text-area">
+                                        <input type="text" name="isbn" placeholder="isbn" maxlength="10">
+                                        <div class="counter" id="counter">10</div>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <div class="text-area">
+                                        <input type="text" name="title" placeholder="title" maxlength="250">
+                                        <div class="counter" id="counter">250</div>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <input style="max-width: 430px;" type="file" name="file" placeholder="upload file" accept="image/*">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <div class="text-area">
+                                        <input type="text" name="author" placeholder="author" maxlength="250">
+                                        <div class="counter" id="counter">250</div>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <div class="text-area">
+                                        <textarea id="plot" style="height: 100px;" name="summary" placeholder="summary"
+                                            maxlength="500"></textarea>
+                                        <div class="counter" id="counter">500</div>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+
+                                    <div class="text-area">
+                                        <textarea id="plot" name="plot" placeholder="text" maxlength="5000"></textarea>
+                                        <div class="counter" id="counter">5000</div>
+                                    </div>
+
+                                </th>
+                            </tr>
+
+                            </tr>
+                            <tr>
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <th> <input class="table_button" type="submit" name="back" value="back">
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th> <input class="table_button" type="submit" name="save-book"
+                                                value="save changes">
+                                        </th>
+                                    </tr>
+                                </table>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
+
+{% block script %}
+
+<script language="javascript" type="text/javascript">
+    console.log("" + document.querySelectorAll('.text-area'));
+    document.querySelectorAll('.text-area').forEach(doc => {
+        console.log("" + doc);
+        var text = doc.querySelector("textarea");
+        if (text == null)
+            text = doc.querySelector("input");
+
+        const counter = doc.querySelector(".counter");
+        const max = text.maxLength;
+
+        const update = () => {
+            const remaining = max - text.value.length;
+            counter.textContent = remaining;
+        };
+        update();
+        text.addEventListener('input', update);
+    });
+</script>
+
+{% endblock %}

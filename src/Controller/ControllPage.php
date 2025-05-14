@@ -4,11 +4,11 @@
 namespace App\Controller;
 
 
+use Random\Randomizer;
 use App\game\CardsUtility;
 use App\cards\CardsHandler;
 use App\cards\CardsShuffleGame;
-use Random\Randomizer;
-use SebastianBergmann\Environment\Console;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -379,6 +379,28 @@ class ControllPage extends AbstractController
     #[Route('/library', name: 'library', methods: ['GET', 'POST'])]
     public function library(Request $request, SessionInterface $session): Response
     {
+        if ($request->request->has('add-book'))
+            return $this->render('/page/library-edit.html.twig', [
+                'title' => 'Edit book'
+            ]);
+        if ($request->request->has('save-book')) {
+            return new Response('Clicked at save');
+           /*  return $this->render('/page/library-edit.html.twig', [
+                'title' => 'Saved book'
+            ]); */
+        }
+
+        return $this->render('./page/library.html.twig', [
+            'title' => 'Library'
+        ]);
+    }
+
+
+    #[Route('/modify', name: 'library-modify', methods: ['GET', 'POST'])]
+    public function libraryModify(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+
 
         return $this->render('./page/library.html.twig', [
             'title' => 'Library'
