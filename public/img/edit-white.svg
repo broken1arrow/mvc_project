@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<svg width="256" height="256" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" xml:space="preserve">
+
+ <g class="layer">
+  <title>Layer 1</title>
+  <g fill="none" fill-rule="nonzero" id="svg_1" stroke-miterlimit="10" stroke-width="0" transform="translate(1.40659, 1.40659) matrix(2.81, 0, 0, 2.81, 0, 0)">
+   <path d="m54.57,90l-44.81,0c-5.38,0 -9.76,-4.38 -9.76,-9.76l0,-70.48c0,-5.38 4.38,-9.76 9.76,-9.76l70.48,0c5.38,0 9.76,4.38 9.76,9.76l0,46.83c0,1.65 -1.34,3 -3,3s-3,-1.35 -3,-3l0,-46.83c0,-2.07 -1.69,-3.76 -3.76,-3.76l-70.48,0c-2.07,0 -3.76,1.69 -3.76,3.76l0,70.48c0,2.07 1.69,3.76 3.76,3.76l44.81,0c1.66,0 3,1.34 3,3s-1.34,3 -3,3z" fill="#ffffff" fill-rule="nonzero" id="svg_2" stroke-miterlimit="10" transform=" matrix(1 0 0 1 0 0) "/>
+   <path d="m71.46,25.09l-52.92,0c-1.66,0 -3,-1.34 -3,-3s1.34,-3 3,-3l52.92,0c1.66,0 3,1.34 3,3s-1.34,3 -3,3z" fill="#ffffff" fill-rule="nonzero" id="svg_3" stroke-miterlimit="10" transform=" matrix(1 0 0 1 0 0) "/>
+   <path d="m71.46,40.36l-52.92,0c-1.66,0 -3,-1.34 -3,-3s1.34,-3 3,-3l52.92,0c1.66,0 3,1.35 3,3s-1.34,3 -3,3z" fill="#ffffff" fill-rule="nonzero" id="svg_4" stroke-miterlimit="10" transform=" matrix(1 0 0 1 0 0) "/>
+   <path d="m33.28,55.64l-14.74,0c-1.66,0 -3,-1.35 -3,-3s1.34,-3 3,-3l14.74,0c1.65,0 3,1.34 3,3s-1.35,3 -3,3z" fill="#ffffff" fill-rule="nonzero" id="svg_5" stroke-miterlimit="10" transform=" matrix(1 0 0 1 0 0) "/>
+   <path d="m42.82,70.91l-24.28,0c-1.66,0 -3,-1.34 -3,-3s1.34,-3 3,-3l24.28,0c1.66,0 3,1.34 3,3s-1.34,3 -3,3z" fill="#ffffff" fill-rule="nonzero" id="svg_6" stroke-miterlimit="10" transform=" matrix(1 0 0 1 0 0) "/>
+   <path d="m87.75,72.93l-19.08,-19.09c-1.41,-1.4 -3.16,-2.46 -5.07,-3.04l-10,-3.05c-1.67,-0.52 -3.46,-0.07 -4.69,1.16c-1.23,1.23 -1.67,3.03 -1.17,4.69l3.06,10c0.58,1.91 1.64,3.66 3.04,5.07l19.09,19.08c1.5,1.5 3.47,2.25 5.44,2.25c1.97,0 3.95,-0.75 5.45,-2.25l3.93,-3.93c3,-3.01 3,-7.89 0,-10.89z" fill="#ffffff" fill-rule="nonzero" id="svg_7" stroke-miterlimit="10" transform=" matrix(1 0 0 1 0 0) "/>
+  </g>
+ </g>
+</svg>

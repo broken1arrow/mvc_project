@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+
+<main>
+    <div style="display: inline;margin-top: 1.5em;">
+        <a href="{{path('library')}}" class="button-back">Back</a>
+    </div>
+    <div style="max-width: 900px;background-color: #cf671d;margin: 2em; box-shadow: 4px 4px 5px 8px #cf671d;border-radius: 0.0005em;">
+        <h1>{{ book.title }}</h1>
+        <div>
+            {% if book != null and book.image is defined %}
+            <div style="display: flex;margin-bottom: 0;font-size: 0.8rem;">
+                <p style="margin-top: 0;margin-bottom: 0;color: rgb(76, 86, 106);">Author:</p>
+                <p style="margin-top: 0;margin-bottom: 0; margin-left: 0.5em; font-family: cursive;">
+                    {{ book.author }}
+
+                </p>
+            </div>
+            <img src="uploads/{{ book.image }}" onerror="this.src='img/no-image-found.avif';" style="width: 100%;margin: 5px 10px 10px 0px;box-shadow: 2px 2px 3px 3px #000000;">
+            <p style="margin-top: 0.2em;">
+                {{ book.plot}}
+            </p>
+            {% else %}
+            <h1 style="color: red;">ERROR NO DATA FOUND</h1>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+{% endblock %}

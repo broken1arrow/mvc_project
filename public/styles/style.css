@@ -579,6 +579,20 @@ grid {
     border-radius: 0.5em;
 }
 
+.button-back {
+
+    padding: 0.5em;
+    margin-top: 0.5em;
+    margin-right: 1em;
+    font-size: 2rem;
+    color: #242424;
+    background-color: #026d39;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 5px 5px 10px 10px #00000075;
+    border-radius: 0.5em;
+}
+
 .hover-image:hover {
     transform: scale(1.05);
     z-index: 10;
@@ -636,6 +650,68 @@ grid {
     width: 35%;
     float: right;
     margin: 0 0 0 0.5em;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+    padding: 1em;
+
+}
+
+.books-grid .books-grid-item {
+    display: block;
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: #136213;
+    box-shadow: 2px 2px 10px 2px #000000;
+    padding: 0.7em;
+}
+
+.books-grid .books-grid-item h2 {
+    color: rgb(45, 45, 45);
+}
+
+.books-grid .remove-button {
+    position: absolute;
+    top: 0px;
+    right: 1px;
+    border: none;
+
+    background: url("/img/trash-can-red.svg") no-repeat center;
+    background-color: #282828;
+    width: 40px;
+    height: 35px;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.books-grid .edit-button {
+    position: absolute;
+    bottom: 1px;
+    right: 50px;
+    border: none;
+    border-radius: none;
+    padding: 0.2em;
+    background: url("/img/edit-white.svg") no-repeat center;
+    background-color: #282828;
+    width: 40px;
+    height: 35px;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.books-grid .remove-button:hover {
+    top: 1.5px;
+    background-color: #5a5a5a;
+}
+
+.books-grid .edit-button:hover {
+    bottom: -0.5px;
+    background-color: #5a5a5a;
 }
 
 /* 
@@ -701,6 +777,10 @@ grid {
         overflow-wrap: anywhere;
         margin: inherit;
         word-break: break-all;
+
+    }
+    .books-grid {
+        grid-template-columns: 1fr;
 
     }
 

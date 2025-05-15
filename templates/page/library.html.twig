@@ -14,7 +14,7 @@
                     <fieldset>
                         <table style="width: 100%;">
                             <tr>
-                                <th> <input class="table_button" type="submit" name="add-book" value="add or edit book">
+                                <th> <input class="table_button" type="submit" name="add-book" value="add book">
                                 </th>
                             </tr>
                         </table>
@@ -22,7 +22,45 @@
                 </form>
             </div>
             <div>
-                <h1>Under construction!!!!!!!</h1>
+                <div class="books-grid">
+                    {% if books != null %}
+                    {% for book in books %}
+                    <a href="{{path('library')}}?bookid={{ book.isbn }}" class="books-grid-item">
+                        <form method="post" style="border: none;box-shadow:none;background: none !important;">
+                            <fieldset style="width: 99%;">
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <th style="position: relative;">
+                                            <h2 style="margin-bottom: 0;margin-top: 0;text-align: center;">{{ book.title
+                                                }}</h2>
+
+                                            <input type="hidden" name="book-id" value="{{ book.isbn }}" />
+                                            <button class="remove-button " type="submit" name="remove-book">
+
+                                            <button class="edit-button" type="submit" name="edit-book">
+                                        </th>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                        </form>
+                        <img src="uploads/{{ book.image }}" onerror="this.src='img/no-image-found.avif';">
+                        <div style="display: flex;margin-bottom: 0;font-size: 0.8rem;">
+                            <p style="margin-top: 0;margin-bottom: 0;color: antiquewhite;">Author:</p>
+                            <p style="margin-top: 0;margin-bottom: 0; margin-left: 0.5em; font-family: cursive;">
+                                {{ book.author }}
+
+                            </p>
+                        </div>
+                        <p style="margin-top: 0.5em;">
+                            {{ book.description }}
+                        </p>
+                    </a>
+                    {% endfor %}
+                    {% else %}
+                    <h1>Nothing found</h1>
+                    {% endif %}
+                </div>
+                <h1>Could still be some bugs, working on sort it out so fast as I could.</h1>
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ use App\game\CardsUtility;
 use App\cards\CardsHandler;
 use App\cards\CardsShuffleGame;
 use App\database\DatabaseLogic;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -381,63 +382,94 @@ class ControllPage extends AbstractController
     #[Route('/library', name: 'library', methods: ['GET', 'POST'])]
     public function library(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
     {
-        if ($request->request->has('add-book'))
+        if ($request->request->has('add-book')) {
             return $this->render('/page/library-edit.html.twig', [
-                'title' => 'Edit book'
+                'title' => 'Edit book',
+                'book' => new Books()
             ]);
+        }
+
+        $entityManager = $doctrine->getManager();
+
         if ($request->request->has('save-book')) {
-            $entityManager = $doctrine->getManager();
-            $databaseLogic = new DatabaseLogic($request, $this);
-
             $isbn = $request->request->get('isbn');
-            $title = $request->request->get('title');
-            $author = $request->request->get('author');
-            $summary = $request->request->get('summary');
-            $plot = $request->request->get('plot');
+            if ($isbn == null) {
+                return $this->render('/messagePage/save.html.twig', [
+                    'title' => 'Failure',
+                    'data_info' => "You must set isbn on your book",
+                    'path' => "/library",
+                    'sub_title' => "Failed",
+                    'time' => "5",
+                    "info" => "You get redirected in 5 seconds"
+                ]);
+            }
 
-            $imageName = $databaseLogic->saveImage();
-
-            $book = new Books();
-
-            if ($isbn != null)
-                $book->setIsbn($isbn);
-
-            if ($title != null)
-                $book->setTitle($title);
-
-            if ($imageName != null)
-                $book->setImage($imageName);
-            else
-                $book->setImage("not set");
-
-            if ($author != null)
-                $book->setAuthor($author);
-
-            if ($summary != null)
-                $book->setDescription($summary);
-
-            if ($plot != null)
-                $book->setPlot($plot);
-
-            $entityManager->persist($book);
-            $entityManager->flush();
-
+            $book =  $this->setData($request, $entityManager);
 
             return $this->render('/messagePage/save.html.twig', [
-                'title' => 'Library',
+                'title' => 'Save',
                 'data_info' => "Saved data: $book",
                 'path' => "/library",
                 'sub_title' => "Save",
                 'time' => "5",
                 "info" => "You get redirected in 5 seconds"
             ]);
-            /*  return $this->render('/page/library-edit.html.twig', [
-                'title' => 'Saved book'
-            ]); */
+        }
+        $bookId = $request->request->get('book-id');
+        if ($bookId != null) {
+
+            if ($request->request->has('edit-book')) {
+
+                $book = $entityManager->getRepository(Books::class)->findOneBy(['isbn' => $bookId]);
+                return $this->render('/page/library-edit.html.twig', [
+                    'title' => 'Edit book',
+                    'book' => $book
+                ]);
+            }
+
+            if ($request->request->has('remove-book')) {
+
+                $book = $entityManager->getRepository(Books::class)->findOneBy(['isbn' => $bookId]);
+
+                if ($book == null) {
+                    return $this->render('/messagePage/save.html.twig', [
+                        'title' => 'Remove',
+                        'data_info' => "Could not remove: $bookId]",
+                        'path' => "/library",
+                        'sub_title' => "Remove",
+                        'time' => "5",
+                        "info" => "You get redirected in 5 seconds"
+                    ]);
+                }
+                $entityManager->remove($book);
+                $entityManager->flush();
+
+                return $this->render('/messagePage/save.html.twig', [
+                    'title' => 'Remove',
+                    'data_info' => "Removed data: $book",
+                    'path' => "/library",
+                    'sub_title' => "Remove",
+                    'time' => "5",
+                    "info" => "You get redirected in 5 seconds"
+                ]);
+            }
         }
 
+
+        $bookid =  $request->query->get("bookid");
+        if ($bookid != null) {
+            $book = $entityManager->getRepository(Books::class)->findOneBy(['isbn' => $bookid]);
+            return $this->render('/page/bookinfo.html.twig', [
+                'title' => 'Library',
+                'book' => $book
+            ]);
+        }
+
+        $books = $entityManager->getRepository(Books::class)->findAll();
+
         return $this->render('./page/library.html.twig', [
-            'title' => 'Library'
+            'title' => 'Library',
+            'books' => $books
         ]);
     }
 
@@ -451,5 +483,68 @@ class ControllPage extends AbstractController
         return $this->render('./page/library.html.twig', [
             'title' => 'Library'
         ]);
+    }
+
+    public function setData(Request $request, ObjectManager $entityManager): Books
+    {
+        $databaseLogic = new DatabaseLogic($request, $this);
+
+        $isbn = $request->request->get('isbn');
+        $title = $request->request->get('title');
+        $author = $request->request->get('author');
+        $summary = $request->request->get('summary');
+        $plot = $request->request->get('plot');
+
+        $imageName = $databaseLogic->saveImage();
+
+        $bookData = $entityManager->getRepository(Books::class)->findOneBy(['isbn' => $isbn]);
+        if ($bookData == null)
+            $book = new Books();
+        else
+            $book = $bookData;
+
+        if ($isbn != null && $bookData == null)
+            $book->setIsbn($isbn);
+
+        if ($title != null)
+            $book->setTitle($title);
+        else {
+            if ($bookData == null)
+                $book->setTitle("untitled");
+        }
+
+        if ($imageName != null)
+            $book->setImage($imageName);
+        else {
+            if ($bookData == null)
+                $book->setImage("");
+        }
+
+        if ($author != null)
+            $book->setAuthor($author);
+        else {
+            if ($bookData == null)
+                $book->setAuthor("Unknown");
+        }
+
+        if ($summary != null)
+            $book->setDescription($summary);
+        else {
+            if ($bookData == null)
+                $book->setDescription("No summary provided for the book");
+        }
+
+        if ($plot != null)
+            $book->setPlot($plot);
+        else {
+            if ($bookData == null)
+                $book->setPlot("No plot provided for the book");
+        }
+
+        if ($bookData == null)
+            $entityManager->persist($book);
+        $entityManager->flush();
+
+        return $book;
     }
 }

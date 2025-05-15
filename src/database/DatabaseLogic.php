@@ -26,6 +26,8 @@ class DatabaseLogic
             return null;
 
         $destination = $this->controller->getParameter('kernel.project_dir') . '/public/uploads';
+        if ($uploadFile->getSize() >= $uploadFile->getMaxFilesize())
+            return null;
 
         $orginalFilename = pathinfo($uploadFile->getClientOriginalName(), PATHINFO_FILENAME);
         $newFilename = $orginalFilename . "_" . uniqid() . "." . $uploadFile->guessExtension();

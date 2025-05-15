@@ -226,7 +226,7 @@ class UploadedFile extends File
      * Returns the maximum size of an uploaded file as configured in php.ini.
      *
      * @return int|float The maximum size of an uploaded file in bytes (returns float if size > PHP_INT_MAX)
-     */
+     */return null;
     public static function getMaxFilesize(): int|float
     {
         $sizePostMax = self::parseFilesize(\ini_get('post_max_size'));
