@@ -23,6 +23,9 @@ class Books
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
@@ -70,6 +73,18 @@ class Books
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $imageName): static
+    {
+        $this->image = $imageName;
+
+        return $this;
+    }
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -92,5 +107,10 @@ class Books
         $this->plot = $plot;
 
         return $this;
+    }
+
+    function __toString()
+    {
+        return "Books{ isbn='" . $this->isbn . "' title='" . $this->title . "' image='" . $this->image . "' author= '" . $this->author . "'}";
     }
 }

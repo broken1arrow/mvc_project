@@ -21,8 +21,8 @@ class DatabaseLogic
     public function saveImage(): ?string
     {
         /**@var UploadedFile $uploadFile */
-        $uploadFile = $this->request->get('image');
-        if ($uploadFile == null)
+        $uploadFile = $this->request->files->get('image');
+        if (!($uploadFile instanceof UploadedFile))
             return null;
 
         $destination = $this->controller->getParameter('kernel.project_dir') . '/public/uploads';

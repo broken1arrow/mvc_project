@@ -4,10 +4,12 @@
 namespace App\Controller;
 
 
+use App\Entity\Books;
 use Random\Randomizer;
 use App\game\CardsUtility;
 use App\cards\CardsHandler;
 use App\cards\CardsShuffleGame;
+use App\database\DatabaseLogic;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -377,15 +379,59 @@ class ControllPage extends AbstractController
     }
 
     #[Route('/library', name: 'library', methods: ['GET', 'POST'])]
-    public function library(Request $request, SessionInterface $session): Response
+    public function library(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
     {
         if ($request->request->has('add-book'))
             return $this->render('/page/library-edit.html.twig', [
                 'title' => 'Edit book'
             ]);
         if ($request->request->has('save-book')) {
-            return new Response('Clicked at save');
-           /*  return $this->render('/page/library-edit.html.twig', [
+            $entityManager = $doctrine->getManager();
+            $databaseLogic = new DatabaseLogic($request, $this);
+
+            $isbn = $request->request->get('isbn');
+            $title = $request->request->get('title');
+            $author = $request->request->get('author');
+            $summary = $request->request->get('summary');
+            $plot = $request->request->get('plot');
+
+            $imageName = $databaseLogic->saveImage();
+
+            $book = new Books();
+
+            if ($isbn != null)
+                $book->setIsbn($isbn);
+
+            if ($title != null)
+                $book->setTitle($title);
+
+            if ($imageName != null)
+                $book->setImage($imageName);
+            else
+                $book->setImage("not set");
+
+            if ($author != null)
+                $book->setAuthor($author);
+
+            if ($summary != null)
+                $book->setDescription($summary);
+
+            if ($plot != null)
+                $book->setPlot($plot);
+
+            $entityManager->persist($book);
+            $entityManager->flush();
+
+
+            return $this->render('/messagePage/save.html.twig', [
+                'title' => 'Library',
+                'data_info' => "Saved data: $book",
+                'path' => "/library",
+                'sub_title' => "Save",
+                'time' => "5",
+                "info" => "You get redirected in 5 seconds"
+            ]);
+            /*  return $this->render('/page/library-edit.html.twig', [
                 'title' => 'Saved book'
             ]); */
         }

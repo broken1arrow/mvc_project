@@ -10,7 +10,7 @@
         <div style="margin: 2em;">
             <div
                 style="border-radius: 0.5em;border: 0.2px solid black;background-color: #116811;padding: 2px;box-shadow: 8px 5px 15px 2px black;">
-                <form method="post" style="border: none;box-shadow:none;">
+                <form method="post" enctype="multipart/form-data" style="border: none;box-shadow:none;">
                     <fieldset>
                         <table style="width: 100%;">
                             <tr>
@@ -31,7 +31,7 @@
                             </tr>
                             <tr>
                                 <th>
-                                    <input style="max-width: 430px;" type="file" name="file" placeholder="upload file" accept="image/*">
+                                    <input style="max-width: 430px;" type="file" name="image" accept="image/*">
                                 </th>
                             </tr>
                             <tr>
@@ -45,7 +45,7 @@
                             <tr>
                                 <th>
                                     <div class="text-area">
-                                        <textarea id="plot" style="height: 100px;" name="summary" placeholder="summary"
+                                        <textarea id="summary" style="height: 100px;" name="summary" placeholder="summary"
                                             maxlength="500"></textarea>
                                         <div class="counter" id="counter">500</div>
                                     </div>
@@ -55,7 +55,7 @@
                                 <th>
 
                                     <div class="text-area">
-                                        <textarea id="plot" name="plot" placeholder="text" maxlength="5000"></textarea>
+                                        <textarea id="plot" name="plot" placeholder="plot" maxlength="5000"></textarea>
                                         <div class="counter" id="counter">5000</div>
                                     </div>
 
