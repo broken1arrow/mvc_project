@@ -474,15 +474,41 @@ class ControllPage extends AbstractController
     }
 
 
-    #[Route('/modify', name: 'library-modify', methods: ['GET', 'POST'])]
-    public function libraryModify(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
+    #[Route('api/library/books', name: 'books-list', methods: ['GET', 'POST'])]
+    public function booksList(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
     {
         $entityManager = $doctrine->getManager();
 
+        $bookData = $entityManager->getRepository(Books::class)->findAll();
+        //dd($bookData);
+        $books = [];
+        foreach ($bookData as $data) {
+            $books[] = [$data->getIsbn() => $data->__toString()];
+        }
 
-        return $this->render('./page/library.html.twig', [
-            'title' => 'Library'
-        ]);
+        $response = new Response();
+        $response->setContent(json_encode($books, false));
+
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+
+    #[Route('api/library/book/<isbn>', name: 'one-book', methods: ['GET', 'POST'])]
+    public function book(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $bookid =  $request->query->get("bookid");
+        $bookData = $entityManager->getRepository(Books::class)->findOneBy(['isbn' => $bookid]);
+
+        $response = new Response();
+        if ($bookData)
+            $response->setContent(json_encode([$bookData->getIsbn() =>  $bookData->__toString()], false));
+        else
+            $response->setContent(json_encode(["blank" =>  "Found nothing"], false));
+
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     public function setData(Request $request, ObjectManager $entityManager): Books
