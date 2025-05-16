@@ -6,18 +6,21 @@
 
 <main>
     <div>
-        <h1>Library</h1>
         <div style="margin: 2em;">
-            <div
-                style="border-radius: 0.5em;border: 0.2px solid black;background-color: #116811;padding: 2px;box-shadow: 8px 5px 15px 2px black;">
-                <form method="post" style="border: none;box-shadow:none;">
-                    <fieldset>
-                        <table style="width: 100%;">
-                            <tr>
-                                <th> <input class="table_button" type="submit" name="add-book" value="add book">
-                                </th>
-                            </tr>
-                        </table>
+            <div>
+                {# style="border-radius: 0.5em;border: 0.2px solid black;background-color: #116811;padding:
+                2px;box-shadow: 8px 5px 15px 2px black;">
+                #} <form method="post" style="border: none;box-shadow:none;background-color: rgba(0, 0, 0, 0);">
+                    <fieldset style="width: 100%;">
+                        <div class="header-sub">
+                            <div class="left">
+                            <input class="table_button" style="margin: 0; padding: 0;;" type="submit" name="add-book"
+                                value="+ add book">
+                            </div>
+                                <div class="center">
+                            <h1 style="margin: 0; padding: 0;grid-column: 4;">Library</h1>
+                        </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>
@@ -35,9 +38,9 @@
                                                 }}</h2>
 
                                             <input type="hidden" name="book-id" value="{{ book.isbn }}" />
-                                            <button class="remove-button " type="submit" name="remove-book">
+                                            <button class="remove-button " type="submit" name="remove-book"></button>
 
-                                            <button class="edit-button" type="submit" name="edit-book">
+                                            <button class="edit-button" type="submit" name="edit-book"></button>
                                         </th>
                                     </tr>
                                 </table>

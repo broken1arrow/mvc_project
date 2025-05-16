@@ -30,6 +30,32 @@ header {
 
 }
 
+.header-sub {
+    display: grid;
+    background-color: #073d1a;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: start;
+    padding: 1em;
+    width: 95%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.723);
+    border-radius: 0.3em;
+    position: relative;
+    color: #dbdbdb;
+}
+
+.header-sub .center {
+    justify-self: center;
+}
+
+.header-sub .left {
+    justify-self: start;
+}
+
+.header-sub .right {
+    justify-self: end;
+}
+
+
 header nav {
     max-width: 1400px;
     width: 100%;
@@ -664,13 +690,17 @@ grid {
     display: block;
     text-decoration: none;
     color: whitesmoke;
-    background-color: #136213;
-    box-shadow: 2px 2px 10px 2px #000000;
+    background-color: #14532d;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.723);
+    border-radius: 0.3em;
     padding: 0.7em;
 }
 
 .books-grid .books-grid-item h2 {
-    color: rgb(45, 45, 45);
+    color: rgb(223, 223, 223);
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 .books-grid .remove-button {
@@ -678,7 +708,7 @@ grid {
     top: 0px;
     right: 1px;
     border: none;
-
+    border-radius: 0.3em;
     background: url("/img/trash-can-red.svg") no-repeat center;
     background-color: #282828;
     width: 40px;
@@ -690,7 +720,7 @@ grid {
 
 .books-grid .edit-button {
     position: absolute;
-    bottom: 1px;
+    bottom: 4.5px;
     right: 50px;
     border: none;
     border-radius: none;
@@ -706,11 +736,13 @@ grid {
 
 .books-grid .remove-button:hover {
     top: 1.5px;
+    right: 0.5px;
     background-color: #5a5a5a;
 }
 
 .books-grid .edit-button:hover {
-    bottom: -0.5px;
+    bottom: 2.5px;
+    right: 49.5px;
     background-color: #5a5a5a;
 }
 
