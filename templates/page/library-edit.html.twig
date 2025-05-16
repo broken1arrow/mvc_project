@@ -16,9 +16,10 @@
                             <tr>
                                 <th>
                                     <div class="text-area">
-                                
-                                        <input type="text" name="isbn" placeholder="isbn" maxlength="10" value="{{book.isbn}}">
-                                        
+
+                                        <input type="text" name="isbn" placeholder="isbn" maxlength="10"
+                                            value="{{book.isbn}}">
+
                                         <div class="counter" id="counter">10</div>
                                     </div>
                                 </th>
@@ -26,20 +27,46 @@
                             <tr>
                                 <th>
                                     <div class="text-area">
-                                        <input type="text" name="title" placeholder="title" maxlength="250" value="{{book.title}}">
+                                        <input type="text" name="title" placeholder="title" maxlength="250"
+                                            value="{{book.title}}">
                                         <div class="counter" id="counter">250</div>
                                     </div>
                                 </th>
                             </tr>
                             <tr>
                                 <th>
-                                    <input style="max-width: 430px;" type="file" name="image" accept="image/*">
+                                    <div class="file-selection">
+                                        {% if book.image != null %}
+                                        <label class="file-selection-label" for="image"
+                                            style="font-size: 1.3rem;">Choose new image</label>
+                                        {% else %}
+                                        <label class="file-selection-label" for="image">Choose image</label>
+                                        {% endif %}
+
+
+                                        <input style="max-width: 430px;" type="file" id="image" name="image"
+                                            accept="image/*">
+
+                                        {% if book.image != null %}
+                                        <span class="file-name" id="file-name"
+                                            style="font-family: cursive;font-size: 1rem;margin-right: 5px;">{{book.image}}</span>
+                                            <label class="file-selection-label-clear"
+                                            style="display: inline-block;" id="clear">❌</label>
+                                        {% else %}
+                                        <span class="file-name" id="file-name" data-previous="{{book.image}}" style="margin-right: 15px;">No image
+                                            selected</span>
+                                        {% endif %}
+
+                                        <label class="file-selection-label-clear"
+                                            style="display: none;" id="clear">❌</label>
+                                    </div>
                                 </th>
                             </tr>
                             <tr>
                                 <th>
                                     <div class="text-area">
-                                        <input type="text" name="author" placeholder="author" maxlength="250" value="{{book.author}}">
+                                        <input type="text" name="author" placeholder="author" maxlength="250"
+                                            value="{{book.author}}">
                                         <div class="counter" id="counter">250</div>
                                     </div>
                                 </th>
@@ -47,8 +74,8 @@
                             <tr>
                                 <th>
                                     <div class="text-area">
-                                        <textarea id="summary" style="height: 100px;" name="summary" placeholder="summary"
-                                            maxlength="500">{{book.description}}</textarea >
+                                        <textarea id="summary" style="height: 100px;" name="summary"
+                                            placeholder="summary" maxlength="500">{{book.description}}</textarea>
                                         <div class="counter" id="counter">500</div>
                                     </div>
                                 </th>
@@ -57,7 +84,8 @@
                                 <th>
 
                                     <div class="text-area">
-                                        <textarea id="plot" name="plot" placeholder="plot" maxlength="5000">{{book.plot}}</textarea>
+                                        <textarea id="plot" name="plot" placeholder="plot"
+                                            maxlength="5000">{{book.plot}}</textarea>
                                         <div class="counter" id="counter">5000</div>
                                     </div>
 
@@ -92,7 +120,7 @@
 {% block script %}
 
 <script language="javascript" type="text/javascript">
-    console.log("" + document.querySelectorAll('.text-area'));
+
     document.querySelectorAll('.text-area').forEach(doc => {
         console.log("" + doc);
         var text = doc.querySelector("textarea");
@@ -109,6 +137,33 @@
         update();
         text.addEventListener('input', update);
     });
+
+    const fileInput = document.getElementById('image');
+    const displayName = document.getElementById('file-name');
+    const image = displayName.dataset.previous || null;
+    const clear = document.getElementById('clear');
+
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (file != null)
+            displayName.textContent = file.name;
+        else
+            displayName.textContent = image ?? "No image selected";
+
+        if (file != null || image != null)
+            clear.style.display = 'inline-block';
+        else {
+            clear.style.display = 'none';
+        }
+    });
+
+    clear.addEventListener('click', () => {
+        fileInput.value = '';
+
+        displayName.textContent = image ?? "No image selected";
+        clear.style.display = 'none';
+    });
+
 </script>
 
 {% endblock %}

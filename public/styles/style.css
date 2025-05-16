@@ -222,7 +222,7 @@ fieldset input {
     border-radius: var(--table-radius);
     color: #ffffff;
     margin-top: 2px;
-    ;
+
 }
 
 fieldset textarea {
@@ -714,6 +714,57 @@ grid {
     background-color: #5a5a5a;
 }
 
+.file-selection {
+    max-width: 435px;
+    width: 435px;
+    position: relative;
+    display: inline-block;
+    align-items: start;
+    font-size: 1.35rem;
+    background-color: #242424;
+    border-color: #000000;
+    border-radius: var(--table-radius);
+    border: 1px solid #393939;
+    border-bottom: 2px solid rgb(176, 176, 176);
+    border-right: 2px solid rgb(176, 176, 176);
+    color: #ffffff;
+    margin-top: 2px;
+
+}
+
+.file-selection input[type="file"] {
+    display: none;
+}
+
+.file-selection-label {
+    display: inline-block;
+    padding: 2px;
+    margin: 5px 10px 5px 2px;
+    border: 2.5px solid #000000;
+    border-radius: 0.2em;
+    background-color: #fb6d00;
+    color: #e8e8e8;
+    cursor: pointer;
+
+}
+
+.file-selection-label-clear {
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    cursor: pointer;
+    font-size: 2rem;
+    color: red;
+    font-weight: bold;
+
+}
+
+
+.file-name {
+    margin-right: 10px;
+    color: #ffffff;
+}
+
 /* 
 .grid_item_customer:hover {
      background-color: #e9e9e9; 
@@ -779,6 +830,7 @@ grid {
         word-break: break-all;
 
     }
+
     .books-grid {
         grid-template-columns: 1fr;
 
