@@ -1,0 +1,30 @@
+imports:
+    - php
+
+filter:
+    excluded_paths: [vendor/*, test/*]
+
+build:
+    image: default-bionic
+
+    nodes:
+        my-tests:
+            environment:
+                php:
+                    version: 8.2.28
+            commands:
+              - command: 'export DATABASE_URL="sqlite:///:memory:"'
+              - command: 'export APP_ENV=test'
+        analysis:
+          commands:
+            - command: 'export DATABASE_URL="sqlite:///:memory:"'
+            - command: 'export APP_ENV=test'
+            - command: 'php-scrutinizer-run'
+            #- phpcs-run # Not used, missing config file
+    tests:
+        override:
+            - command: 'APP_ENV=test DATABASE_URL="sqlite:///:memory:" composer phpunit'
+                # command: "XDEBUG_MODE=coverage vendor/bin/phpunit"
+              coverage:
+                    file: "docs/coverage.clover"
+                    format: "php-clover"
