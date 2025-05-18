@@ -511,6 +511,14 @@ class ControllPage extends AbstractController
         return $response;
     }
 
+    #[Route('/metrics', name: 'metrics', methods: ['GET', 'POST'])]
+    public function metrics(): Response
+    {
+        return $this->render('./page/metrics.html.twig', [
+            'title' => 'Introduktion'
+        ]);
+    }
+
     public function setData(Request $request, ObjectManager $entityManager): Books
     {
         $databaseLogic = new DatabaseLogic($request, $this);

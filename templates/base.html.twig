@@ -42,6 +42,9 @@
         <span>
             <a href="{{path('library')}}" class="{% if app.request.attributes.get('_route') == 'library' %}active{% endif %}">Library</a>
         </span>
+        <span>
+            <a href="{{path('metrics')}}" class="{% if app.request.attributes.get('_route') == 'metrics' %}active{% endif %}">Metrics</a>
+        </span>
         {# <span>
             <a href="index" class="<%=activePage === '/index' ? 'active' : '' %>">Index</a>
         </span>

@@ -42,4 +42,6 @@ public/img/test.png
 
 public/uploads/*
 docs/coverage/*
+docs/metrics/*
 public/img/lib.png
+templates/page/metrics.html.twig
