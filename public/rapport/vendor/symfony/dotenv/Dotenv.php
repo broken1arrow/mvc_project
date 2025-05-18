@@ -549,8 +549,7 @@ final class Dotenv
     {
         foreach ($paths as $path) {
             if (!is_readable($path) || is_dir($path)) {
-                continue;
-                //throw new PathException($path);
+                throw new PathException($path);
             }
 
             $data = file_get_contents($path);
