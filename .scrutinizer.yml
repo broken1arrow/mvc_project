@@ -19,6 +19,11 @@ build:
           commands:
             - command: 'export DATABASE_URL="sqlite:///:memory:"'
             - command: 'export APP_ENV=test'
+            - command: 'git init'
+            - command: 'git config user.email "ci@example.com"'
+            - command: 'git config user.name "CI"'
+            - command: 'git add .'
+            - command: 'git commit -m "Initial"'
             - command: 'php-scrutinizer-run'
             #- phpcs-run # Not used, missing config file
     tests:
