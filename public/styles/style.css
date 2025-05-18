@@ -687,6 +687,8 @@ grid {
 }
 
 .books-grid .books-grid-item {
+    width: 25em;
+    flex-shrink: 0;
     display: block;
     text-decoration: none;
     color: whitesmoke;
@@ -694,6 +696,13 @@ grid {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.723);
     border-radius: 0.3em;
     padding: 0.7em;
+    transition: all 0.2s ease;
+}
+
+.books-grid .books-grid-item:hover {
+   transform: scale(1.01);
+   box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.723);
+    
 }
 
 .books-grid .books-grid-item h2 {
@@ -709,7 +718,7 @@ grid {
     right: 1px;
     border: none;
     border-radius: 0.3em;
-    background: url("/img/trash-can-red.svg") no-repeat center;
+    background: url("../img/trash-can-red.svg") no-repeat center;
     background-color: #282828;
     width: 40px;
     height: 35px;
@@ -725,7 +734,7 @@ grid {
     border: none;
     border-radius: none;
     padding: 0.2em;
-    background: url("/img/edit-white.svg") no-repeat center;
+    background: url("../img/edit-white.svg") no-repeat center;
     background-color: #282828;
     width: 40px;
     height: 35px;
@@ -866,6 +875,9 @@ grid {
     .books-grid {
         grid-template-columns: 1fr;
 
+    }
+    .books-grid .books-grid-item {
+        width: 100%;
     }
 
 }
