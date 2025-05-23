@@ -111,18 +111,6 @@ class ControllerApi extends AbstractController
         return $response;
     }
 
-    #[Route('/cards', name: 'cards', methods: ['GET', 'POST'])]
-    public function cards(Request $request, SessionInterface $session): Response
-    {
-        $cardsShuffleGame = new CardsShuffleGame($request, $session);
-        $cards =  $cardsShuffleGame->handleCards();
-
-        return $this->render('/page/cards.html.twig', [
-            'title' => 'Cards',
-            'cards' => $cards ?? "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must click on reset to set new cards.</div>",
-            'sub_title' => "Deck options:"
-        ]);
-    }
 
     #[Route('api/library/books', name: 'books-list', methods: ['GET', 'POST'])]
     public function booksList(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response

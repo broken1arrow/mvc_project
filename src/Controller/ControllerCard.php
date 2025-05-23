@@ -23,6 +23,19 @@ class ControllerCard  extends AbstractController
         ]);
     }
 
+    #[Route('/cards', name: 'cards', methods: ['GET', 'POST'])]
+    public function cards(Request $request, SessionInterface $session): Response
+    {
+        $cardsShuffleGame = new CardsShuffleGame($request, $session);
+        $cards =  $cardsShuffleGame->handleCards();
+
+        return $this->render('/page/cards.html.twig', [
+            'title' => 'Cards',
+            'cards' => $cards ?? "<div class=\"card_item\" style=\"grid-column: 1/-1;\">You must click on reset to set new cards.</div>",
+            'sub_title' => "Deck options:"
+        ]);
+    }
+
 
     #[Route('/cards/deck/shuffle', name: 'shuffle', methods: ['GET', 'POST'])]
     public function shuffle(Request $request, SessionInterface $session): Response
