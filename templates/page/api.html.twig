@@ -4,9 +4,12 @@
 {% block body %}
 
 <main>
-    <div>
-        {% block routes %}{{routes}}{% endblock %}
-        <div style="display: flex; margin-top: 2em;">
+    <div style="width: 100%;">
+        <div>
+            {% block routes %}{{routes}}{% endblock %}
+        </div>
+        <div
+            style="display: grid;grid-template-columns: repeat(5,1fr) ;gap: 1em; margin-top: 2em;margin-left: 1em;margin-right: 1em;">
             <a class="button" href="./api/quote">Quote </a>
             <a class="button" href="./api/game">Game </a>
             <a class="button" href="./session">Session </a>

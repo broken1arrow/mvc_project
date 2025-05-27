@@ -1,0 +1,35 @@
+{% extends 'proj/heders/base-proj.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+
+<main>
+    <div>
+        <h1>Home</h1>
+        <div style="margin: 2em;">
+            <p>hang tight this page will be updated soon I hope.
+                Some more shit below.
+            <p>
+        </div>
+        <div class="chart-stat">
+            {%for obj in stats %}
+            <div class="bar-group">
+                <div class="bar-wrap">
+                    <div class="bar" title="Total: {{ obj.value_raw }}" style="height: {{ obj.value }}%;">
+                        <span>{{obj.value }}</span>
+                    </div>
+                </div>
+                <div class="year">{{obj.year }}</div>
+            </div>
+            {%endfor%}
+        </div>
+        {# <div class="labels">
+            {%for obj in stats %}
+            <div class="label">{{obj.year }}</div>
+            {%endfor%}
+        </div> #}
+    </div>
+</main>
+
+{% endblock %}

@@ -262,14 +262,14 @@ class ControllPage extends AbstractController
 
     public function setData(Request $request, ObjectManager $entityManager): Books
     {
-        $databaseLogic = new DatabaseLogic($request, $this);
-
-        $isbn = $request->request->get('isbn');
-        $title = $request->request->get('title');
-        $author = $request->request->get('author');
-        $summary = $request->request->get('summary');
-        $plot = $request->request->get('plot');
-
+        $databaseLogic = new DatabaseLogic($request, $this); 
+        
+            $isbn = $request->request->get('isbn');
+            $title = $request->request->get('title');
+            $author = $request->request->get('author');
+            $summary = $request->request->get('summary');
+            $plot = $request->request->get('plot');
+        
         $imageName = $databaseLogic->saveImage();
 
         $bookData = $entityManager->getRepository(Books::class)->findOneBy(['isbn' => $isbn]);
