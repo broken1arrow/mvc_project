@@ -25,9 +25,13 @@ class GlobalWhether
     #[ORM\OneToMany(mappedBy: 'globalWhether', targetEntity: Wildfires::class, cascade: ["persist"])]
     private  $wildfires;
 
+    #[ORM\OneToMany(mappedBy: 'globalWhether', targetEntity: Emissions::class, cascade: ["persist"])]
+    private  $emissions;
+
     public function  __construct()
     {
         $this->wildfires = new ArrayCollection();
+        $this->emissions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,6 +72,18 @@ class GlobalWhether
     {
         $this->wildfires[] = $wildfires;
         $wildfires->setGlobalWhether($this);
+        return $this;
+    }
+
+    public function getEmissions()
+    {
+        return $this->emissions;
+    }
+
+    public function addEmissions(Emissions  $emissions): static
+    {
+        $this->emissions[] = $emissions;
+        $emissions->setGlobalWhether($this);
         return $this;
     }
 }

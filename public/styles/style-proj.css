@@ -891,8 +891,7 @@ grid {
     display: flex;
     position: relative;
     align-items: flex-end;
-    height: 350px;
-    min-height: 100px;
+    height: 200px;
     gap: 10px;
     padding-bottom: 20px;
     border-left: 2px solid #333;
@@ -909,6 +908,7 @@ grid {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-items: center;
 }
 
 .bar-wrap {
@@ -933,11 +933,11 @@ grid {
 
 .bar {
     display: inline-flex;
-    width: 25px;
+    width: 15px;
     background: steelblue;
     position: relative;
     align-items: flex-end;
-    justify-content: center;
+    text-align: right;
     color: white;
     font-size: 0.9rem;
     transition: background 0.3s;
@@ -945,11 +945,27 @@ grid {
 
 
 
-.year{
+.year {
     margin-top: 6px;
     font-weight: bold;
+    color: #ffffff;
     position: absolute;
     bottom: -25px;
+}
+
+.marking {
+    width: 100%;
+    border-bottom: 2px solid #000000;
+    position: absolute;
+    left: 0px;
+    bottom: 25%;
+}
+
+.marking_text {
+    position: absolute;
+    color: #ffffff;
+    left: -45px;
+    bottom: 21%;
 }
 
 .bar:hover {
@@ -961,12 +977,23 @@ grid {
     transform: rotate(180deg);
     color: rgb(228, 228, 228);
     font-size: 0.9rem;
-    padding: 5px 0px;
-    margin-right: 15px;
-    margin-bottom: 0px;
+    padding: 0px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+
 }
 
-
+.bar * p {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: rgb(228, 228, 228);
+    font-size: 0.9rem;
+    padding: 0px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
 
 
 @media (max-width: 1200px) {
@@ -974,6 +1001,14 @@ grid {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
         row-gap: 1.5em;
+    }
+
+    .bar {
+        width: 10px;
+    }
+
+    .bar * p {
+        font-size: 0.7rem;
     }
 }
 
@@ -1038,4 +1073,43 @@ grid {
         width: 100%;
     }
 
+    .bar {
+        width: 5px;
+    }
+
+    .bar * span {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-size: 0.3rem;
+    }
+
+    .bar * p {
+        font-size: 0.3rem;
+    }
+
+    .year {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .chart-stat {
+        width: 85%;
+        margin-left: 50px;
+
+    }
+
+    .bar {
+        width: 3px;
+    }
+
+
+    .bar * p {
+        font-size: 0.2rem;
+    }
+
+    .marking_text {
+        font-size: 0.8rem;
+    }
 }

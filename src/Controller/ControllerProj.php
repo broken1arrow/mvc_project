@@ -34,7 +34,18 @@ class ControllerProj extends AbstractController
     {
 
         return $this->render('/proj/page/about.html.twig', [
-            'title' => 'Proj',
+            'title' => 'About',
         ]);
     }
+
+    #[Route('/proj/api', name: 'api', methods: ['GET', 'POST'])]
+    public function api(Request $request, SessionInterface $session): Response
+    {
+
+        return $this->render('/proj/page/about.html.twig', [
+            'title' => 'Api',
+        ]);
+    }
+
+
 }

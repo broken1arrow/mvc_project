@@ -13,18 +13,29 @@
             <p>
         </div>
         <div class="chart-stat">
+
+            <div class="marking"></div>
+            <div class="marking_text">50%</div>
+
             {%for obj in stats %}
             <div class="bar-group">
                 <div class="bar-wrap">
                     <div class="bar" title="Average global temp: {{ obj.temp_n }}" style="height: {{ obj.temp }}%;">
                         <div>
-                            <span>{{obj.temp_n }}</span>
+                            <p>{{obj.temp_n }}</p>
                         </div>
                     </div>
                     <div class="bar" title="Average amount of wildfires: {{ obj.wildfires }}"
                         style="height: {{ obj.wildfires_n }}%;">
                         <div>
-                            <span>{{obj.wildfires }}</span>
+                            <p>{{obj.wildfires }}</p>
+                        </div>
+                    </div>
+                    <div class="bar" title="Per capita CO₂ emissions: {{ obj.emission}}"
+                        style="background-color: {{ obj.emission is same as( 'NaN') ? 'green' : none}}; 
+                        height: {{ obj.emission is same as('NaN') ? 10 : obj.emission_n}}%;">
+                        <div>
+                            <p>{{obj.emission }}</p>
                         </div>
                     </div>
                 </div>
