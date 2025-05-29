@@ -20,8 +20,8 @@ class Wildfires
     #[ORM\Column]
     private ?int $amount = null;
 
-    #[ORM\ManyToOne(targetEntity:GlobalWhether::class,inversedBy:'wildfires')]
-    #[ORM\JoinColumn(name:'globalwhether_id',referencedColumnName:'id',nullable:false)]
+    #[ORM\ManyToOne(targetEntity: GlobalWhether::class, inversedBy: 'wildfires')]
+    #[ORM\JoinColumn(name: 'globalwhether_id', referencedColumnName: 'id', nullable: false)]
     private GlobalWhether $globalWhether;
 
     public function getId(): ?int
@@ -64,6 +64,4 @@ class Wildfires
 
         return $this;
     }
-
-
 }

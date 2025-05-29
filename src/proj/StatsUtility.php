@@ -36,10 +36,15 @@ class StatsUtility
             $temp = $wetherdat->getTemperature();
             $wildfires  = $wetherdat->getWildfires();
 
+            $wild = '';
+            foreach($wildfires as $wildfire){
+                $wild += $wildfire->getAmount();
+            }
+
             $data = [
                 'year' => $year,
                 'temp' => $temp,
-                'wildfires' => $wildfires-> getValues()
+                'wildfires' => $wild 
             ];
         }
         
