@@ -17,18 +17,15 @@
             <div class="bar-group">
                 <div class="bar-wrap">
                     <div class="bar" title="Total: {{ obj.value_raw }}" style="height: {{ obj.value }}%;">
-                        <span>{{obj.value }}</span>
+                        <div>
+                            <span>{{obj.value }}</span>
+                        </div>
                     </div>
                 </div>
                 <div class="year">{{obj.year }}</div>
             </div>
             {%endfor%}
         </div>
-        {# <div class="labels">
-            {%for obj in stats %}
-            <div class="label">{{obj.year }}</div>
-            {%endfor%}
-        </div> #}
     </div>
 </main>
 

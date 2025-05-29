@@ -931,7 +931,7 @@ grid {
 }
 
 .bar {
-    display: flex;
+    display: inline-flex;
     width: 40px;
     background: steelblue;
     position: relative;
@@ -955,13 +955,14 @@ grid {
     background: dodgerblue;
 }
 
-.bar span {
+.bar * span {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     color: rgb(228, 228, 228);
     font-size: 0.9rem;
-    padding: 5px 0;
-    margin-bottom: 4px;
+    padding: 5px 0px;
+    margin-right: 20px;
+    margin-bottom: 0px;
 }
 
 
