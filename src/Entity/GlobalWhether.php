@@ -22,7 +22,7 @@ class GlobalWhether
     #[ORM\Column]
     private ?float $temperature = null;
 
-    #[ORM\OneToMany(mappedBy: 'globalwhether', targetEntity: Wildfires::class, cascade: ["persist"])]
+    #[ORM\OneToMany(mappedBy: 'globalWhether', targetEntity: Wildfires::class, cascade: ["persist"])]
     private  $wildfires;
 
     public function  __construct()

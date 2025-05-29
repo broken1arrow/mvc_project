@@ -20,21 +20,12 @@ class ControllerProj extends AbstractController
     public function proj(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
     {
         $statsUtility = new StatsUtility();
-        //$statsUtility->generateData($doctrine);
+        //$statsUtility-> generateData($doctrine);
         $data = $statsUtility->getData($doctrine);
-        dd($data);
-
-
-        $stats = [
-            ['year' => 2020, 'value' => 60, 'value_raw' => 789],
-            ['year' => 2021, 'value' => 80, 'value_raw' => 11457887],
-            ['year' => 2022, 'value' => 50, 'value_raw' => 14785],
-            ['year' => 2023, 'value' => 90, 'value_raw' => 11478],
-            ['year' => 2024, 'value' => 100, 'value_raw' => 7899]
-        ];
+        
         return $this->render('/proj/page/index.html.twig', [
             'title' => 'Home',
-            'stats' =>  $stats
+            'stats' => $data
         ]);
     }
 
