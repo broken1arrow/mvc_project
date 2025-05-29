@@ -31,7 +31,7 @@
                             <p>{{obj.wildfires }}</p>
                         </div>
                     </div>
-                    <div class="bar" title="Per capita CO₂ emissions: {{ obj.emission}}"
+                    <div class="bar" title="Per capita CO₂ emissions: {{ obj.emission}} t"
                         style="background-color: {{ obj.emission is same as( 'NaN') ? 'green' : none}}; 
                         height: {{ obj.emission is same as('NaN') ? 10 : obj.emission_n}}%;">
                         <div>

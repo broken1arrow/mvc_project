@@ -1,0 +1,111 @@
+{% extends 'proj/heders/base-proj.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+
+<main>
+    <div>
+        <h1>Database</h1>
+        <div style="margin: 2em;">
+            <div class="list-style-wraper" style="margin-left: 1em;">
+                <ul class="list-style" style="margin-left: 1em;">
+                    <li>
+                        <h3 style="margin: 0;padding: 0;">ER diagram </h3>
+                        <p>
+                        </p>
+                    </li>
+                    <li>
+                        <h3 style="margin: 0;padding: 0;"> För varje tabell beskriv i en mening vad som sparas i
+                            tabellen.
+                        </h3>
+                        <p>I mitt projekt sparas i global_whether ett datum och den förhöjda medeltempraturen. I
+                            wildfires så sparas de antalet bränder på ett år och ett datum som egentligen inte har någon
+                            betydelse, ihop med ID från global_whether. I just denna tabel emissions sparas just hur
+                            många ton utsläpp per person globalt, ihop med id från global_whether. Jag tog inte med
+                            datum i denna tabel, för de var egntligen meningslöst. Se om jag fixar wildfires tabellen
+                            också.
+                        </p>
+                    </li>
+                    <li>
+                        <h3 style="margin: 0;padding: 0;">Förklara hur du löste eventuella relationer mellan tabellerna.
+                        </h3>
+                        <p>Antar du menar med orm? så fick jag söka upp info runt foreign keys, men var inte så enkelt
+                            få till. Men efter par timmars kämpande med fel så löstes felet. Dels behövde jag få till
+                            rätt namn på mappedBy och motsvarande inversedBy (den är dock inte så viktigt i detta
+                            fallet). Vidare behövdes initialize för den laddar bara in losly datan från andra tabeler
+                            tydligen i PersistentCollection. Kanske finns andra sätt också, men de var de sättet jag såg
+                            att den hade satt data i arrayen.
+                        </p>
+                        <p>Men allt utgår ifrån globalWhether klasen och verkar vara så man bör göra för hålla
+                            dataintegriteten. De blir i alla fall enklare än använda persist på varje klass för sig,
+                            för dessa har en relation just till parent klassen. Sen kanske man skulle ha abstrakt lager
+                            på detta utåt, så man inte kan använda funtioner/methoder hejvilt. De jag menar är att man
+                            frontas av just methoderna från parent klassen och sätter inte data av misstag i en av child
+                            klasserna utan att först ha specificerat parent klassens data.
+                        </p>
+                    </li>
+                    <li>
+                        <h3 style="margin: 0;padding: 0;">Berätta om du använde SQLite eller någon annan databas.
+                        </h3>
+                        <p>Jag använde samma databas som för biboteket med böcker. Inte för jag inte kan köra annan
+                            databas, utan för minska strulet på skolservern. Minska antalet felkällor helt enkelt. Sen
+                            har ju SQLite vissa fördelar, som den inte bryr sig om längd på en sträng och vilken datatyp
+                            du sätter. Om man nu inte specifikt sätter den i strikt mode. MongoDb är annars tydligen ett
+                            het val, dock är deras dokumentation inte den bästa och sätta upp egen server privat är
+                            rejäl utmaning. Får man tag i deras instalations fil för windows sakas vissa viktiga
+                            drivrutiner för servern ska ens starta. Var inte lätt att hitta en körbar exe fil som var
+                            färdig att bara köra igång.
+                        </p>
+                        <p>Ganska säker på detta är medvetet för du ska köpa en plats på deras servers. Genom göra det
+                            svårt att sätta upp detta själv. Men gick i alla fall få upp en server, dock vet jag inte om
+                            jag skulle få igång detta idag. För de är inte lättjobbat och de har egentligen inte heller
+                            primär nycklar. Så man får fuska lite för lösa de problmet.
+                        </p>
+                    </li>
+                    <li>
+                        <h3 style="margin: 0;padding: 0;">Berätta om du gjorde enhetstester mot databasen.
+                        </h3>
+                        <p>Nej, men inte omöjligt heller att lösa, beror också på vad för tester samt med eller utan
+                            ORM.
+                            Sen sätter jag ingen data, just för de stod inga krav om deta. Men möjligheten finns inbyggd
+                            som kan lätt modiferas, men vet inte om de finns praktisk nytta. Just för datan är mer eller
+                            mindre statisk och blir kneppigt om du ska undvika dubleter (de går så klart att lösa). Men
+                            då måste man ha koll som man inte sätter ID en gång till, för de gillar inte detta API i
+                            alla fall.
+                        </p>
+                        <p>Jag kan ju testa utan några svårigheter att läsa data, för de är just en method bara fundera
+                            ut hur jag ska hantera just ManagerRegistry, måste ju fixa egen instans för få de fungera
+                            utan fel. De med Scrutinizer så verkar du sätta upp den emot docs foldern, så har du tänkt
+                            man ska lägga på ett skript för få den att köra emot en databas? De blir ju ganska knepigt
+                            få till, coverage fungerar ju inte heller. Troligen för docs foldern är inte på github,
+                            informationen har inte varit så tydlig vad som ska köras och vad kommadona gör.
+                        </p>
+                        <p>Ni har klagat på hur mina uppgifter saknar saker och inte fungerar på skolservern. Men då
+                            borde ni vara tydligare med vad som man ska göra, för jag har fått fylla i luckorna själv 
+                            vad jag anser bör finnas i koden. Sen kravet på Github, utan ge bra instruktioner när de skär sig med redan ett Github  
+                        </p>
+                    </li>
+                    <li>
+                        <h3 style="margin: 0;padding: 0;">Berätta med egna ord (cirka 15 meningar) om hur du ser på
+                            fördelar, nackdelar, likheter och skillnader mellan ORM och det sätt vi jobbade med
+                            databasen i databaskursen.
+                        </h3>
+                        <p>Nej, men inte omöjligt heller att lösa, beror också på vad för tester samt med eller utan
+                            ORM.
+                            Sen sätter jag ingen data, just för de stod inga krav om deta. Men möjligheten finns inbyggd
+                            som kan lätt modiferas, men vet inte om de finns praktisk nytta. Just för datan är mer eller
+                            mindre statisk och blir kneppigt om du ska undvika dubleter (de går så klart att lösa). Men
+                            då måste man ha koll som man inte sätter ID en gång till, för de gillar inte detta API i
+                            alla fall.
+                        </p>
+                        <p>Jag kan ju testa utan några svårigheter att läsa data.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

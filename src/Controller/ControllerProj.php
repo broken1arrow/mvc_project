@@ -38,10 +38,20 @@ class ControllerProj extends AbstractController
         ]);
     }
 
+
+    #[Route('proj/about/database', name: 'database', methods: ['GET', 'POST'])]
+    public function database(Request $request, SessionInterface $session): Response
+    {
+
+        return $this->render('/proj/page/database.html.twig', [
+            'title' => 'Database',
+        ]);
+    }
+
+
     #[Route('/proj/api', name: 'api', methods: ['GET', 'POST'])]
     public function api(Request $request, SessionInterface $session): Response
     {
-
         return $this->render('/proj/page/about.html.twig', [
             'title' => 'Api',
         ]);
