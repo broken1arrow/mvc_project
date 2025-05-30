@@ -30,7 +30,7 @@ class ControllerProj extends AbstractController
         ]);
     }
 
-    #[Route('/proj/about', name: 'about', methods: ['GET', 'POST'])]
+    #[Route('/proj/about', name: 'about_proj', methods: ['GET', 'POST'])]
     public function about(Request $request, SessionInterface $session): Response
     {
 
@@ -50,7 +50,7 @@ class ControllerProj extends AbstractController
     }
 
 
-    #[Route('/proj/api', name: 'api', methods: ['GET', 'POST'])]
+    #[Route('/proj/api', name: 'api_proj', methods: ['GET', 'POST'])]
     public function api(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
     {
         $form = $this->createForm(ProjForm::class);
@@ -58,13 +58,39 @@ class ControllerProj extends AbstractController
       
         if($form->isSubmitted()){
             $statsUtility = new StatsUtility();
-            if($form->get('All_data')){
+      
+           if($form->get('all_data')->isClicked()){
                 $response = new Response(null,303);
                 $response->setContent(json_encode($statsUtility->getData($doctrine)));
                 $response->headers->set('Content-Type', 'application/json');
                 return $response;
+            } 
+
+            if($form->get('wild_data')->isClicked()){
+                $response = new Response(null,303);
+                $data = $statsUtility->getData($doctrine);
+                $dataValues= [];
+                foreach($data as $value){
+                    $dataValues []= ["wildfires"=>$value['wildfires']];
+                }
+                $response->setContent(json_encode( $dataValues) );
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
             }
-            return $this->redirectToRoute('api');
+
+            if($form->get('emissions')->isClicked()){
+                $response = new Response(null,303);
+                $data = $statsUtility->getData($doctrine);
+                $dataValues= [];
+                foreach($data as $value){
+                    $dataValues []= ["wildfires"=>$value['emissions']];
+                }
+                $response->setContent(json_encode( $dataValues) );
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+            }
+
+            return $this->redirectToRoute('api_proj');
         }
         $respons = new Response(null,$form->isSubmitted() ? 303: 200);
        

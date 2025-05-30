@@ -14,7 +14,10 @@ class ProjForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('All_data', SubmitType::class, ['label' => 'Get all data']);
+            ->add('all_data', SubmitType::class, ['label' => 'Get all data'])
+            ->add('wild_data', SubmitType::class, ['label' => 'Wildfires data'])
+            ->add('emissions', SubmitType::class, ['label' => 'Emissions'])
+            ;
     }
 
 

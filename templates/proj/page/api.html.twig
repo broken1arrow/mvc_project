@@ -7,9 +7,13 @@
 <main>
     <div>
         <h1>API</h1>
-        <div style="margin: 2em;">
-         {{form(form)}}
+        {{ form_start(form) }}
+        <div class="form_style" >
+            {{ form_row(form.all_data) }}
+            {{ form_row(form.wild_data) }}
+            {{ form_row(form.emissions) }}
         </div>
+        {{ form_end(form) }}
     </div>
 </main>
 
