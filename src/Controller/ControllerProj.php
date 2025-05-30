@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ProjForm;
 use App\proj\StatsUtility;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,7 @@ class ControllerProj extends AbstractController
         $statsUtility = new StatsUtility();
         //$statsUtility-> generateData($doctrine);
         $data = $statsUtility->getData($doctrine);
-        
+
         return $this->render('/proj/page/index.html.twig', [
             'title' => 'Home',
             'stats' => $data
@@ -50,12 +51,26 @@ class ControllerProj extends AbstractController
 
 
     #[Route('/proj/api', name: 'api', methods: ['GET', 'POST'])]
-    public function api(Request $request, SessionInterface $session): Response
+    public function api(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
     {
-        return $this->render('/proj/page/about.html.twig', [
+        $form = $this->createForm(ProjForm::class);
+        $form ->handleRequest($request);
+      
+        if($form->isSubmitted()){
+            $statsUtility = new StatsUtility();
+            if($form->get('All_data')){
+                $response = new Response(null,303);
+                $response->setContent(json_encode($statsUtility->getData($doctrine)));
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+            }
+            return $this->redirectToRoute('api');
+        }
+        $respons = new Response(null,$form->isSubmitted() ? 303: 200);
+       
+        return $this->render('/proj/page/api.html.twig', [
             'title' => 'Api',
-        ]);
+            'form' => $form->createView()
+        ],$respons);
     }
-
-
 }
