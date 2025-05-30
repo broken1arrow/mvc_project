@@ -83,12 +83,62 @@ class ControllerProj extends AbstractController
                 $data = $statsUtility->getData($doctrine);
                 $dataValues= [];
                 foreach($data as $value){
-                    $dataValues []= ["wildfires"=>$value['emissions']];
+                    $dataValues []= ["emissions"=>$value['emission']];
                 }
                 $response->setContent(json_encode( $dataValues) );
                 $response->headers->set('Content-Type', 'application/json');
                 return $response;
             }
+
+            if($form->get('temp')->isClicked()){
+                $response = new Response(null,303);
+                $data = $statsUtility->getData($doctrine);
+                $dataValues= [];
+                foreach($data as $value){
+                    $dataValues []= ["average-temp"=>$value['temp_n']];
+                }
+                $response->setContent(json_encode( $dataValues) );
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+            }
+
+            if($form->get('temp_with_year')->isClicked()){
+                $response = new Response(null,303);
+                $data = $statsUtility->getData($doctrine);
+                $dataValues= [];
+                foreach($data as $value){
+                    $dataValues []= ['year'=> $value['year'],"average-temp"=>$value['temp_n']];
+                }
+                $response->setContent(json_encode( $dataValues) );
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+            }
+
+            if($form->get('wildfires_with_year')->isClicked()){
+                $response = new Response(null,303);
+                $data = $statsUtility->getData($doctrine);
+                $dataValues= [];
+                foreach($data as $value){
+                    $dataValues []= ['year'=> $value['year'],"wildfires"=>$value['wildfires']];
+                }
+                $response->setContent(json_encode( $dataValues) );
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+            }
+
+
+            if($form->get('emission_with_year')->isClicked()){
+                $response = new Response(null,303);
+                $data = $statsUtility->getData($doctrine);
+                $dataValues= [];
+                foreach($data as $value){
+                    $dataValues []= ['year'=> $value['year'],"emissions"=>$value['emission']];
+                }
+                $response->setContent(json_encode( $dataValues) );
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+            }
+
 
             return $this->redirectToRoute('api_proj');
         }

@@ -17,6 +17,10 @@ class ProjForm extends AbstractType
             ->add('all_data', SubmitType::class, ['label' => 'Get all data'])
             ->add('wild_data', SubmitType::class, ['label' => 'Wildfires data'])
             ->add('emissions', SubmitType::class, ['label' => 'Emissions'])
+            ->add('temp', SubmitType::class, ['label' => 'Global avarage temp'])
+            ->add('temp_with_year', SubmitType::class, ['label' => 'Year and avarage temp'])
+            ->add('wildfires_with_year', SubmitType::class, ['label' => 'Year and wildfires'])
+            ->add('emission_with_year', SubmitType::class, ['label' => 'Year and emissions'])
             ;
     }
 
