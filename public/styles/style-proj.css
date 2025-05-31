@@ -252,6 +252,8 @@ table {
 }
 
 form {
+    display: flex;
+    justify-content: center;
     border: 0.01em solid #01000b;
     box-shadow: 8px 8px 10px 3px #01000ba8;
     background: #020024;
@@ -1005,8 +1007,9 @@ grid {
 }
 
 .form_style {
-    display: grid;
-    grid-template-columns: repeat(5, auto);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 1em;
     margin: 0.5em;
 }
@@ -1035,12 +1038,13 @@ grid {
     border-radius: 0.5em;
     border-color: #000000;
     cursor: pointer;
+    
 }
 
 .form_style button:hover {
     transition: all 10ms ease-in-out;
-    transform: scale(0.95);
-    box-shadow: 3px 3px 5px 5px #00000075;
+    transform: scale(0.98);
+    box-shadow: 4px 4px 4px 4px #000000dd;
 
 }
 
@@ -1048,7 +1052,7 @@ grid {
     background-color: #3f3f3f;
     color: #a1a1a1;
     transition: all 15ms ease;
-    transform: scale(0.90);
+    transform: scale(0.95);
     box-shadow: 2px 2px 5px 2px #00000075;
 
 }

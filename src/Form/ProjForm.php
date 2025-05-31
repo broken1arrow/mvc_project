@@ -11,7 +11,7 @@ class ProjForm extends AbstractType
 {
 
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options):void
     {
         $builder
             ->add('all_data', SubmitType::class, ['label' => 'Get all data'])
@@ -25,7 +25,7 @@ class ProjForm extends AbstractType
     }
 
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver):void
     {
         $resolver->setDefaults(
             [
