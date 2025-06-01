@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 class someTest extends TestCase
@@ -77,11 +78,11 @@ class someTest extends TestCase
 
     public function testProj()
     {
-     $controllerProj = new ControllerProjTest();
-     $controllerProj->testProj();
-     $controllerProj->testAPI();
-     $controllerProj->testAbout();
-     $controllerProj->testDatabase();
+        $controllerProj = new ControllerProjTest();
+        $controllerProj->testProj();
+        $controllerProj->testAPI();
+        $controllerProj->testAbout();
+        $controllerProj->testDatabase();
     }
 }
 class ControllerProjTest extends WebTestCase
@@ -89,97 +90,94 @@ class ControllerProjTest extends WebTestCase
     private KernelBrowser $client;
     function __construct()
     {
-        $this-> client = static::createClient();  
+        $this->client = static::createClient();
     }
 
     public function testProj()
     {
-        $crawler =$this->client->request('GET', '/proj'); 
-        $this->assertResponseIsSuccessful(); 
-        $this->assertSelectorTextContains('title', 'Home'); 
+        $crawler = $this->client->request('GET', '/proj');
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('title', 'Home');
     }
 
     public function testAPI()
     {
-        $crawler = $this->client->request('GET', '/proj/api'); 
-        $this->assertResponseIsSuccessful(); 
-        $this->assertSelectorTextContains('title', 'Api'); 
+        $crawler = $this->client->request('GET', '/proj/api');
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('title', 'Api');
+
+        $buttons = ['all_data', 'wild_data', 'emissions', 'temp', 'temp_with_year', 'wildfires_with_year', 'emission_with_year'];
+        foreach ($buttons as $button) {
+            $this->submitForm($crawler, $button);
+        }
+        /*   $this->assertResponseRedirects('/proj/api');
+        $this->client->followRedirect(); */
     }
+
     public function testAbout()
     {
-        $crawler = $this->client->request('GET', '/proj/about'); 
-        $this->assertResponseIsSuccessful(); 
-        $this->assertSelectorTextContains('title', 'About'); 
+        $crawler = $this->client->request('GET', '/proj/about');
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('title', 'About');
     }
     public function testDatabase()
     {
-        $crawler = $this->client->request('GET', '/proj/about/database'); 
-        $this->assertResponseIsSuccessful(); 
-        $this->assertSelectorTextContains('title', 'Database'); 
+        $crawler = $this->client->request('GET', '/proj/about/database');
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('title', 'Database');
+    }
+
+
+    private function submitForm($crawler, $buttonName)
+    {
+
+        $buttonCrawlerNode = $crawler->selectButton("proj_form[$buttonName]");
+        $form = $buttonCrawlerNode->form();
+
+        $this->assertArrayHasKey($buttonName, $form->getPhpValues()['proj_form'], "The field $buttonName does not exist in the form.");
+
+
+        $this->client->submit($form, [
+            "proj_form[$buttonName]" => '',
+        ]);
+
+        $responseContent = $this->client->getResponse()->getContent();
+        $data = json_decode($responseContent, true);
+        $this->assertNotEmpty($data);
+        $this->assertEquals(count($data),15);
     }
 }
 
 
 
-class SetupMangerReg extends TestCase
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractExtension;
+use Symfony\Component\Form\FormTypeGuesserInterface;
+
+class DoctrineOrmExtension extends AbstractExtension
 {
-    private $entityManager;
-    private $managerRegistry;
+    public function __construct(
+        protected ManagerRegistry $registry,
+    ) {}
 
-    protected function setUp(): void
+    protected function loadTypes(): array
     {
-        $paths = [__DIR__ . '/path/to/your/entities'];
-        $isDevMode = true;
-        $dbParams = [
-            'driver'   => 'pdo_sqlite',
-            'path'   => "sqlite:///%kernel.project_dir%/var/data.db"
+        return [
+            new EntityType($this->registry),
         ];
-
-        $conector = new Connection($dbParams, new Driver(['driverOptions'   => 'pdo_sqlite']));
-        $this->entityManager = new EntityManager($conector, new Configuration());
-
-
-        $this->managerRegistry = new class($this->entityManager) implements ManagerRegistry {
-            private $entityManager;
-
-            public function __construct(EntityManager $entityManager)
-            {
-                $this->entityManager = $entityManager;
-            }
-
-            public function getManager($name = null): EntityManager
-            {
-                return $this->entityManager;
-            }
-
-            public function getConnection($name = null)
-            {
-                return $this->entityManager->getConnection();
-            }
-
-            public function getRepository($persistentObjectName, $entityManagerName = null)
-            {
-                return $this->entityManager->getRepository($persistentObjectName);
-            }
-        };
     }
 
-    protected function closeManger(): void
+    protected function loadTypeGuesser(): ?FormTypeGuesserInterface
     {
-        $this->entityManager->close();
-        $this->entityManager = null;
-    }
-
-    public function testProj()
-    {
-        // Create a real session
-        $session = new Session(new MockArraySessionStorage());
-        $request = new Request();
-        $request->setSession($session);
-        $controller = new ControllerProj();
-
-        $response =  $controller->proj($request, $session, $this->managerRegistry);
-        $this->closeManger();
-        $this->assertNotNull($response);
+        return new DoctrineOrmTypeGuesser($this->registry);
     }
 }

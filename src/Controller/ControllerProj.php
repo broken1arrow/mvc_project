@@ -55,19 +55,18 @@ class ControllerProj extends AbstractController
     {
         $form = $this->createForm(ProjForm::class);
         $form ->handleRequest($request);
-      
+
+    
         if($form->isSubmitted()){
             $statsUtility = new StatsUtility();
-      
+            $response = new Response(null,303);
            if($form->get('all_data')->isClicked()){
-                $response = new Response(null,303);
                 $response->setContent(json_encode($statsUtility->getData($doctrine)));
                 $response->headers->set('Content-Type', 'application/json');
                 return $response;
             } 
 
             if($form->get('wild_data')->isClicked()){
-                $response = new Response(null,303);
                 $data = $statsUtility->getData($doctrine);
                 $dataValues= [];
                 foreach($data as $value){
@@ -79,7 +78,6 @@ class ControllerProj extends AbstractController
             }
 
             if($form->get('emissions')->isClicked()){
-                $response = new Response(null,303);
                 $data = $statsUtility->getData($doctrine);
                 $dataValues= [];
                 foreach($data as $value){
@@ -91,7 +89,6 @@ class ControllerProj extends AbstractController
             }
 
             if($form->get('temp')->isClicked()){
-                $response = new Response(null,303);
                 $data = $statsUtility->getData($doctrine);
                 $dataValues= [];
                 foreach($data as $value){
@@ -103,7 +100,6 @@ class ControllerProj extends AbstractController
             }
 
             if($form->get('temp_with_year')->isClicked()){
-                $response = new Response(null,303);
                 $data = $statsUtility->getData($doctrine);
                 $dataValues= [];
                 foreach($data as $value){
@@ -115,7 +111,6 @@ class ControllerProj extends AbstractController
             }
 
             if($form->get('wildfires_with_year')->isClicked()){
-                $response = new Response(null,303);
                 $data = $statsUtility->getData($doctrine);
                 $dataValues= [];
                 foreach($data as $value){
@@ -128,7 +123,6 @@ class ControllerProj extends AbstractController
 
 
             if($form->get('emission_with_year')->isClicked()){
-                $response = new Response(null,303);
                 $data = $statsUtility->getData($doctrine);
                 $dataValues= [];
                 foreach($data as $value){
