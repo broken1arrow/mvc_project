@@ -15,25 +15,28 @@
     {% block javascripts %}
     {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
+
 </head>
-<header>
-    <nav>
-        <span>
-            <a href="{{path('proj')}}"
-                class="{% if app.request.attributes.get('_route') == 'proj' %}active{% endif %}">Home</a>
-        </span>
-        <span>
-            <a href="{{path('about_proj')}}"
-                class="{% if app.request.attributes.get('_route') == 'about' %}active{% endif %}">About</a>
-        </span>
-        <span>
-            <a href="{{path('api_proj')}}"
-                class="{% if app.request.attributes.get('_route') == 'api_proj' %}active{% endif %}">Api</a>
-        </span>
-    </nav>
-</header>
 
 <body>
+    <header>
+        <nav>
+            <span>
+                <a href="{{path('proj')}}"
+                    class="{% if app.request.attributes.get('_route') == 'proj' %}active{% endif %}">Home</a>
+            </span>
+            <span>
+                <a href="{{path('about_proj')}}"
+                    class="{% if app.request.attributes.get('_route') == 'about' %}active{% endif %}">About</a>
+            </span>
+            <span>
+                <a href="{{path('api_proj')}}"
+                    class="{% if app.request.attributes.get('_route') == 'api_proj' %}active{% endif %}">Api</a>
+            </span>
+        </nav>
+    </header>
+
+
     {% block body %}{% endblock %}
     {% include 'proj/heders/footer-proj.html.twig' %}
     {% block script %}{% endblock %}

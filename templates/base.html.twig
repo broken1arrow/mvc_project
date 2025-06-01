@@ -10,72 +10,59 @@
     {% endblock %}
     <link rel="stylesheet" href="./styles/style.css">
 
-    {% block javascripts %}
-    {% block importmap %}{{ importmap('app') }}{% endblock %}
+
+    {% block importmap %}
+    {{ importmap('app') }}
     {% endblock %}
+
+    {% block javascripts %}
+    {% endblock %}
+
+
 </head>
-<header>
-    <nav>
-        <span>
-            <a href="{{path('index')}}" class="{% if app.request.attributes.get('_route') == 'index' %}active{% endif %}">Home</a>
-        </span>
-        <span>
-            <a href="{{path('report')}}"
-                class="{% if app.request.attributes.get('_route') == 'report' %}active{% endif %}">Report</a>
-        </span>
-        <span>
-            <a href="{{path('about')}}"
-                class="{% if app.request.attributes.get('_route') == 'about' %}active{% endif %}">About</a>
-        </span>
-        <span>
-            <a href="{{path('api')}}" class="{% if app.request.attributes.get('_route') == 'api' %}active{% endif %}">Api</a>
-        </span>
-        <span>
-            <a href="{{path('cards')}}" class="{% if app.request.attributes.get('_route') == 'cards' %}active{% endif %}">Cards</a>
-        </span>
-        <span>
-            <a href="{{path('game')}}" class="{% if app.request.attributes.get('_route') == 'game' %}active{% endif %}">Game</a>
-        </span>
-        <span>
-            <a href="{{path('luck')}}" class="{% if app.request.attributes.get('_route') == 'luck' %}active{% endif %}">Unlucky</a>
-        </span>
-        <span>
-            <a href="{{path('library')}}" class="{% if app.request.attributes.get('_route') == 'library' %}active{% endif %}">Library</a>
-        </span>
-        <span>
-            <a href="{{path('metrics')}}" class="{% if app.request.attributes.get('_route') == 'metrics' %}active{% endif %}">Metrics</a>
-        </span>
-        {# <span>
-            <a href="index" class="<%=activePage === '/index' ? 'active' : '' %>">Index</a>
-        </span>
-        <span>
-            <a href="category" class="<%=activePage === '/category' ? 'active' : '' %>">Category</a>
-        </span>
-        <span>
-            <a href="product" class="<%=activePage === '/product' ? 'active' : '' %>">Product</a>
-        </span>
-        <span>
-            <a href="edit-product" class="<%=activePage === '/edit-product' ? 'active' : '' %>">Edit product</a>
-        </span>
-        <span>
-            <a href="customers" class="<%=activePage === '/customers' ? 'active' : '' %>">Customers</a>
-        </span>
-        <span>
-            <a href="shop" class="<%=activePage === '/shop' ? 'active' : '' %>">Shop</a>
-        </span>
-        <span>
-            <a href="orders" class="<%=activePage === '/orders' ? 'active' : '' %>">Orders</a>
-        </span>
-        <span>
-            <a href="plock" class="<%=activePage === '/plock' ? 'active' : '' %>">Plock</a>
-        </span>
-        <span>
-            <a href="about" class="<%=activePage === '/about' ? 'active' : '' %>">About</a>
-        </span> #}
-    </nav>
-</header>
 
 <body>
+    <header>
+        <nav>
+            <span>
+                <a href="{{path('index')}}"
+                    class="{% if app.request.attributes.get('_route') == 'index' %}active{% endif %}">Home</a>
+            </span>
+            <span>
+                <a href="{{path('report')}}"
+                    class="{% if app.request.attributes.get('_route') == 'report' %}active{% endif %}">Report</a>
+            </span>
+            <span>
+                <a href="{{path('about')}}"
+                    class="{% if app.request.attributes.get('_route') == 'about' %}active{% endif %}">About</a>
+            </span>
+            <span>
+                <a href="{{path('api')}}"
+                    class="{% if app.request.attributes.get('_route') == 'api' %}active{% endif %}">Api</a>
+            </span>
+            <span>
+                <a href="{{path('cards')}}"
+                    class="{% if app.request.attributes.get('_route') == 'cards' %}active{% endif %}">Cards</a>
+            </span>
+            <span>
+                <a href="{{path('game')}}"
+                    class="{% if app.request.attributes.get('_route') == 'game' %}active{% endif %}">Game</a>
+            </span>
+            <span>
+                <a href="{{path('luck')}}"
+                    class="{% if app.request.attributes.get('_route') == 'luck' %}active{% endif %}">Unlucky</a>
+            </span>
+            <span>
+                <a href="{{path('library')}}"
+                    class="{% if app.request.attributes.get('_route') == 'library' %}active{% endif %}">Library</a>
+            </span>
+            <span>
+                <a href="{{path('metrics')}}"
+                    class="{% if app.request.attributes.get('_route') == 'metrics' %}active{% endif %}">Metrics</a>
+            </span>
+        </nav>
+    </header>
+
     {% block body %}{% endblock %}
     {% include 'footer.html.twig' %}
     {% block script %}{% endblock %}
