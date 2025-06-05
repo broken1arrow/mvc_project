@@ -149,8 +149,33 @@ class ControllerApi extends AbstractController
     }
 
 
-    #[Route('api/library/book/', name: 'one-bookV', methods: ['GET', 'POST'])]
+    #[Route('api/library/book/{isbn}', name: 'one-bookV', methods: ['GET', 'POST'])]
     public function bookV(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
+    {
+        $entityManager = $doctrine->getManager();
+        $bookid =  $request->query->get("bookid");
+        $bookData = $entityManager->getRepository(Books::class)->findOneBy(['isbn' => $bookid]);
+
+        $response = new Response();
+        if ($bookData)
+            $response->setContent(json_encode([$bookData->getIsbn() =>  $bookData->__toString()], 0));
+        else {
+            if ($bookid == null) {
+                $bookData = $entityManager->getRepository(Books::class)->findOneBy(['isbn' => '1458sd']);
+                if ($bookData)
+                    $response->setContent(json_encode([$bookData->getIsbn() =>  $bookData->__toString()], 0));
+                else
+                    $response->setContent(json_encode(["blank" =>  "Found nothing"], 0));
+            } else
+                $response->setContent(json_encode(["blank" =>  "Found nothing"], 0));
+        }
+
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+    #[Route('api/library/book/', name: 'one-bookQ', methods: ['GET', 'POST'])]
+    public function bookQ(Request $request, SessionInterface $session, ManagerRegistry $doctrine): Response
     {
         $entityManager = $doctrine->getManager();
         $bookid =  $request->query->get("bookid");

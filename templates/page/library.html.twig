@@ -2,6 +2,7 @@
 
 {% block title %}{{title}}{% endblock %}
 
+
 {% block body %}
 
 <main>
@@ -10,16 +11,17 @@
             <div>
                 {# style="border-radius: 0.5em;border: 0.2px solid black;background-color: #116811;padding:
                 2px;box-shadow: 8px 5px 15px 2px black;">
-                #} <form method="post" style="border: none;box-shadow:none;background-color: rgba(0, 0, 0, 0);">
+                #} <form method="post" data-turbo='false'
+                    style="border: none;box-shadow:none;background-color: rgba(0, 0, 0, 0);">
                     <fieldset style="width: 100%;">
                         <div class="header-sub">
                             <div class="left">
-                            <input class="table_button" style="margin: 0; padding: 0;cursor: pointer;" type="submit" name="add-book"
-                                value="+ add book">
+                                <input class="table_button" style="margin: 0; padding: 0;cursor: pointer;" type="submit"
+                                    name="add-book" value="+ add book">
                             </div>
-                                <div class="center">
-                            <h1 style="margin: 0; padding: 0;grid-column: 4;">Library</h1>
-                        </div>
+                            <div class="center">
+                                <h1 style="margin: 0; padding: 0;grid-column: 4;">Library</h1>
+                            </div>
                         </div>
                     </fieldset>
                 </form>
@@ -28,8 +30,13 @@
                 <div class="books-grid">
                     {% if books != null %}
                     {% for book in books %}
-                    <a href="{{path('library')}}?bookid={{ book.isbn }}" class="books-grid-item">
-                        <form method="post" style="border: none;box-shadow:none;background: none !important;">
+                    <div onclick="navigateToBook('{{book.isbn}}')" tabindex="0"
+                        onkeydown="navigateToBook('{{book.isbn}}')" 
+                        alt="click to open this book"
+                        role="button"
+                        class="books-grid-item">
+                        <form method="post" data-turbo='false'
+                            style="border: none;box-shadow:none;background: none !important;">
                             <fieldset style="width: 99%;">
                                 <table style="width: 100%;">
                                     <tr>
@@ -38,9 +45,11 @@
                                                 }}</h2>
 
                                             <input type="hidden" name="book-id" value="{{ book.isbn }}" />
-                                            <button class="remove-button " type="submit" name="remove-book"></button>
+                                            <button class="remove-button " type="submit" name="remove-book"
+                                                title="Click to remove book" alt="remove book"></button>
 
-                                            <button class="edit-button" type="submit" name="edit-book"></button>
+                                            <button class="edit-button" type="submit" name="edit-book"
+                                                title="Click to edit book" alt="edit book"></button>
                                         </th>
                                     </tr>
                                 </table>
@@ -57,7 +66,7 @@
                         <p style="margin-top: 0.5em;">
                             {{ book.description }}
                         </p>
-                    </a>
+                    </div>
                     {% endfor %}
                     {% else %}
                     <h1>Nothing found</h1>
@@ -68,5 +77,16 @@
         </div>
     </div>
 </main>
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+    function navigateToBook(id) {
+        if (id)
+            window.location.href = "{{path('library')}}?bookid=" + id;
+    }
+</script>
 
 {% endblock %}

@@ -17,7 +17,7 @@
                 read online is true, including this disclaimer!
             </p>
             <h4>Info about the stats</h4>
-            <div class="list-style-wraper">
+            <div class="list-style-wraper" style="margin-left: 1em; color: #dccbb5;">
                 <ul class="list-style">
                     <li>
                         <h3>The first bar:</h3>
@@ -61,44 +61,52 @@
                             not knowing the rules for blackjack and adventure games will take me several months to
                             figure out.
                         </p>
+                        <p>Other than that, I remind you: "So just say this is just humans that create the issue, it is
+                            more complex than that." Meaning, there are a lot of factors in play here, but I don't deny
+                            we are the bigger factor in today's and tomorrow's problems. The chart only demonstrates not
+                            the full picture or the impact of both human-made environmental changes and naturally
+                            occurring catastrophic events. Such as the wildfires, it both something that has always
+                            happen, but is more common now when the weather is more instable and more arid regions risk
+                            to be drier for every year and even regions where was more common with rain experiences same
+                            issue.
+                        </p>
                     </li>
                 </ul>
             </div>
-            <p>
-            <p>
+            <div style="margin-left: 2em;">
+                <div class="chart-stat">
 
-        </div>
-        <div class="chart-stat">
+                    <div class="marking"></div>
+                    <div class="marking_text">50%</div>
 
-            <div class="marking"></div>
-            <div class="marking_text">50%</div>
-
-            {%for obj in stats %}
-            <div class="bar-group">
-                <div class="bar-wrap">
-                    <div class="bar" title="Average global temp: {{ obj.temp_n }}" style="height: {{ obj.temp }}%;">
-                        <div>
-                            <p>{{obj.temp_n }}</p>
-                        </div>
-                    </div>
-                    <div class="bar" title="Average amount of wildfires: {{ obj.wildfires }}"
-                        style="height: {{ obj.wildfires_n }}%;">
-                        <div>
-                            <p>{{obj.wildfires }}</p>
-                        </div>
-                    </div>
-                    <div class="bar" title="Per capita CO₂ emissions: {{ obj.emission}} t" style="background-color: {{ obj.emission is same as( 'NaN') ? 'green' : none}}; 
+                    {%for obj in stats %}
+                    <div class="bar-group">
+                        <div class="bar-wrap">
+                            <div class="bar" title="Average global temp: {{ obj.temp_n }}"
+                                style="height: {{ obj.temp }}%;">
+                                <div>
+                                    <p>{{obj.temp_n }}</p>
+                                </div>
+                            </div>
+                            <div class="bar" title="Average amount of wildfires: {{ obj.wildfires }}"
+                                style="height: {{ obj.wildfires_n }}%;">
+                                <div>
+                                    <p>{{obj.wildfires }}</p>
+                                </div>
+                            </div>
+                            <div class="bar" title="Per capita CO₂ emissions: {{ obj.emission}} t" style="background-color: {{ obj.emission is same as( 'NaN') ? 'green' : none}}; 
                         height: {{ obj.emission is same as('NaN') ? 10 : obj.emission_n}}%;">
-                        <div>
-                            <p>{{obj.emission }}</p>
+                                <div>
+                                    <p>{{obj.emission }}</p>
+                                </div>
+                            </div>
                         </div>
+                        <div class="year">{{obj.year }}</div>
                     </div>
+                    {%endfor%}
                 </div>
-                <div class="year">{{obj.year }}</div>
             </div>
-            {%endfor%}
         </div>
-    </div>
 </main>
 
 {% endblock %}

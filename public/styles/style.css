@@ -725,12 +725,17 @@ grid {
     border-radius: 0.3em;
     padding: 0.7em;
     transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .books-grid .books-grid-item:hover {
     transform: scale(1.01);
     box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.723);
+}
 
+.books-grid .books-grid-item:target {
+    transform: scale(0.99);
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.933);
 }
 
 .books-grid .books-grid-item h2 {
@@ -774,14 +779,25 @@ grid {
 .books-grid .remove-button:hover {
     top: 1.5px;
     right: 0.5px;
-    background-color: #5a5a5a;
+    transform: scale(1.15);
+    background-color: #4f4f6f;
+}
+
+.books-grid .remove-button:active {
+    transform: scale(0.95);
 }
 
 .books-grid .edit-button:hover {
     bottom: 2.5px;
     right: 49.5px;
-    background-color: #5a5a5a;
+    transform: scale(1.15);
+    background-color: #4f4f6f;
 }
+
+.books-grid .edit-button:active {
+    transform: scale(0.95);
+}
+
 
 .file-selection {
     max-width: 435px;
